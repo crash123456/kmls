@@ -1,0 +1,113 @@
+.header{ height:145px; width:100%}
+.ban{ height:30px; line-height:30px; width:980px; margin:0 auto}
+.main{ width:980px; margin:0 auto}
+.mainL{ width:240px}
+.mainR{ width:730px}
+.Status{ font-size:12px; font-weight:normal; color:#666; line-height:15px; width:980px; margin:10px auto}
+/*main left*/
+.ad185{ border:1px solid #ccc; width:238px; height:183px; overflow:hidden}
+.ad90{ border:1px solid #ccc;width:238px; height:90px; overflow:hidden}
+.listT{ border:1px solid #ccc; overflow:hidden}
+.lisrTB{ font-weight:bold; background: url(/images/listIMG/list.png) repeat-x; border-bottom:1px solid #ccc; line-height:28px}
+.topI{border-top:1px solid #ccc; background:url(/images/listIMG/listb.png) no-repeat left; line-height:28px;}
+.topI .seL{line-height:29px; display:inline-block; width:14px; text-align:center;}
+.detail{ border-top:1px solid #ccc}
+.detail .dImg{ height:105px; width:70px; overflow:hidden}
+.detail .dImg img{ width:70px; height:105px;}
+.detail .conN{height:40px; overflow:hidden; word-wrap:break-word; width:148px;}
+.gouM,.oos,.schedule{ background:url(/images/listIMG/list_pr.png) no-repeat -254px -342px; height:18px; width:45px; border:0; cursor:pointer}
+.oos{ background-position:-254px -384px;}
+.schedule{ background-position:-254px -405px;}
+.shou_c{ background:url(/images/listIMG/list_pr.png) no-repeat -254px -363px; height:18px; width:45px; border:0; cursor:pointer;}
+.topI1{ border-top:0}
+
+/***************************** popup *******************************/
+.layer{background:#FFF;display:none;border:3px solid #ccc;padding:10px;width:384px; margin-top:-204px !important;_margin-top:1px; margin-left:-200px!important; position:fixed !important; position:absolute; left:50%; top:50%; background-color:#fff; z-index:1000000;
+_top:       expression(eval(document.compatMode &&
+            document.compatMode=='CSS1Compat') ?
+            documentElement.scrollTop + (document.documentElement.clientHeight-this.offsetHeight)/2 :/*IE6*/
+            document.body.scrollTop + (document.body.clientHeight - this.clientHeight/2));}
+#tanchu{width:100%;height:100%;background:#000;position:absolute;left:0;top:0;/*chrome,ff*/opacity:0.6;/*IE*/filter:alpha(opacity=60);}
+.overlay{position: fixed; z-index: 100000;display:none;width: 100%;height: 100%;top: 0;left: 0;filter: alpha(opacity=50);opacity: 0.5;overflow: hidden;background-color:#000;}
+*html { background:url(*) fixed; }
+*html body { margin:0; height:100%; }
+*html .overlay{ position: absolute; left: expression(documentElement.scrollLeft + documentElement.clientWidth - this.offsetWidth); top: expression(documentElement.scrollTop + documentElement.clientHeight - this.offsetHeight); }
+
+/****** Cart *******/
+.popup_c{ float:left; width:382px; height:104px; border-bottom:#CCC dashed 1px;}
+.popup_bg{width:280px; padding-left:90px; margin-left:12px; background:url(/images/popup/popup.gif) -238px 0 no-repeat;}
+.popup_bg p{ line-height:24px;}
+.popup_bg a.shop,.popup_bg a.jies{ float:left; margin-top:15px; width:90px; line-height:25px; text-align:center; background:url(/images/popup/popup.gif) no-repeat; display:block;}
+.popup_bg a.jies{ width:100px;background:url(/images/popup/popup.gif) -92px 0 no-repeat; margin-left:18px;}
+.gm_list{ float:left; width:383px;}
+.gm_list p{ line-height:24px;}
+.gm_list dl{ float:left; width:182px;}
+.gm_list dt img{ width:160px; height:240px; max-height:240px; max-width:160px;_width:expression(document.body.clientWidth > 160 ? "160px" : "auto");}
+.gm_list dt{ width:160px; height:240px;}
+.gm_list dd{ width:182px; height:18px; line-height:18px; overflow:hidden;}
+.gm_list dd span{ float:left; width:91px; display:block;}
+.gm_list dd a.buy{ float:left; margin-left:70px; display:inline-block; width:45px; line-height:18px; background:url(/images/listIMG/list_pr.png) no-repeat;}
+/****** Cart END *******/
+
+/****** consult *******/
+.consult_w { width:384px;}
+.consult p{ width:384px;}
+.consult p label{ float:left; display: inline;}
+.consult p label input{ float:left; +margin-top:-4px; _margin-top:-4px; width:13px; line-height:13px;}
+.consult p label span{ float:left; padding-left:2px;}
+.consult_n textarea{ width:326px; height:40px; line-height:20px; padding:5px; overflow:hidden; resize:none;}
+.consult_n .nei{ width:326px;}
+.consult_n .enter{ display:block; width:100px; line-height:25px; background:url(/images/popup/popup.gif) no-repeat -92px 0;}
+/****** consult END *******/
+
+/**********************popup END*******************************/
+/******login reg *****/
+input{ outline:none}
+.login_reg{ background-color:#f5f5f5;}
+.login{ width:980px; margin:0 auto}
+.logo_lg{ width:240px; height:45px; overflow:hidden; margin:8px;}
+.logo_lg img{ border:0; display:block;}
+.hotL{ width:600px; line-height:45px;}
+.loginW{ width:453px; border:1px solid #dcdfe5;background-color:#fff; height:460px;}
+.h4{ font-weight:bold; line-height:34px; border-bottom:1px solid #000; margin-bottom:50px;}
+.login label{ display:inline-block; width:140px; line-height:29px; color:#000; text-align:right; padding-right:5px;}
+.login .lab{ width:90px;}
+.inp{ width:158px; height:28px; background:url(/images/shopcar/shopcar_bg.png) 0 -21px no-repeat; padding-top:1px; padding-left:4px;}
+.inp input{ height:26px; border:0; line-height:26px; font-size:12px; color:#666; width:154px;outline:none;-webkit-appearance:none; background:#fcfcfc;}
+.inp1{ width:51px; height:28px; background:url(/images/shopcar/shopcar_bg.png) -163px -21px no-repeat; padding-top:1px; padding-left:4px;}
+.inp1 input{ height:26px; border:0; line-height:26px; font-size:12px; color:#666; width:47px;outline:none;-webkit-appearance:none; background:#fcfcfc;}
+.prompt{ height:14px; line-height:14px; }
+.m145{margin-left:145px;}
+.pro_bg{background: url(/images/tick.png) no-repeat left center; margin-top:8px;}
+.pro_bg1{ background:url(/images/minus.png) no-repeat left center; margin-top:8px;}
+/*.log{ width:120px; height:30px; background:url(/images/shopcar/shopcar_bg.png) 0 -51px no-repeat; margin:30px 8px 0 140px; border:0;}*/
+.log_bg{ width:120px; height:30px; background:url(/images/shopcar/shopcar_bg.png) 0 -51px no-repeat; margin:30px 8px 0 140px; border:0;}
+.change{line-height:30px; width:38px;}
+.change a:hover{ text-decoration:underline;}
+.other{ margin:90px 0 60px; line-height:18px;}
+.login label.h18{ line-height:18px;}
+.weiB{ width:107px; height:18px; background: url(/images/shopcar/shopcar_bg.png) -98px 0 no-repeat; border:0;}
+.zhiF{ width:110px; height:18px; background:url(/images/shopcar/shopcar_bg.png) no-repeat -121px -51px; border:0;}
+.hp{ line-height:32px;}
+.clause{ padding:15px 0;width:190px; margin:35px auto 0; line-height:14px;}
+.clause input{ height:13px; width:13px; border:0}
+.clause .input{ height:13px; width:13px;border:1px solid #1c5180; overflow:hidden;}
+.agree { width:180px; height:30px; background:url(/images/shopcar/shopcar_bg.png) 0 -83px no-repeat; border:0;}
+.age{width:180px; height:30px; overflow:hidden; margin:0 auto;}
+.forget{height:30px; line-height:30px; margin-top:30px}
+a.forget{text-decoration: underline;}
+.close_a{ height:22px; width:22px; background:url(../../images/account/account_m.png) no-repeat -159px 0; top:5px; right:5px;}
+.close_a:hover{ background-position:-187px 0;}
+/******login reg END*****/
+
+
+/********popup login reg*******/
+.login_t{ width:384px; height:31px; background:url(/images/popup_login.gif) 0 -70px repeat-x;}
+.login_t li,.login_t li.current{ float:left; width:84px; line-height:31px; text-align:center; background:url(/images/popup_login.gif) 0 -35px no-repeat;}
+.login_t li.current{ background-position:0 0; font-weight:bold;}
+.ml125{margin-left:125px;}
+.logi{margin:30px 0 20px;}
+.login_m .lab{ width:60px; padding-right:5px; line-height:29px; text-align:right;}
+.login_m .tiao{ margin:0 auto 3px;}
+/******popup login reg END******/
+

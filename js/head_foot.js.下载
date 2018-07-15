@@ -1,0 +1,78 @@
+$(function(){
+    $(".myW").across("myW1");
+    $(".shopCart").across("shopC1");		
+    if($(".find_index").hasClass("center_index")){
+    	$(".leftN").show();
+    }
+	$(".center").hover(function(){
+		$(".leftN").show();
+	},function(){
+		if($(".find_index").hasClass("center_index")){
+			return false;
+		}
+		$(".leftN").hide();
+	});
+});
+
+
+$(function(){
+	$(".sch1").hover(function(){
+		$(this).css({"border-right-width":"2px","width":"51px","padding-bottom":"3px"});
+		$(this).find("dd").show();
+		},function(){
+			$(this).css({"border-right-width":"0px","width":"52px","padding-bottom":"0px"});
+			$(this).find("dd").hide();
+			});
+	$(".sch1 dd a").click(function(event){
+		 var dt=$(".sch1 dt");
+		 var ddAV=$(this).text();
+		 //alert(ddAV);		 
+		 dt.text(ddAV);
+		 if(ddAV == "商品"){
+			$("#searchType").val(1);
+		 }else if(ddAV == "套装"){
+			$("#searchType").val(2);
+		 }else if(ddAV == "其它"){
+			$("#searchType").val(3);
+		 }else{
+			$("#searchType").val(0);
+		 }
+		 $(".sch1").css({"border-right-width":"1px","width":"52px","padding-bottom":"0px"});
+		 $(".sch1 dd").hide();
+		 event.preventDefault();
+		 
+		});
+});
+
+
+
+$.fn.extend({
+	across:function(addClass){
+		$(this).hover(function(){
+			$(this).addClass(addClass);
+			$(this).find(".numD").show();
+			},function(){
+				$(this).removeClass(addClass);
+				$(this).find(".numD").hide();
+				});
+		}
+	});
+
+$(function(){
+	$(".nav_tag dl").each(function(){
+		$(this).find("dd").css({
+			"left": 80,
+			"opacity": 0
+		});
+		$(this).hover(function(){
+	
+				$(this).addClass("active");
+				$(this).children("dd").stop(true, true).animate({ 'left':'185px','opacity':'1'}).show();
+				
+		},function(){
+				$(this).removeClass("active");
+			$(this).children("dd").stop(true, true).animate({ left: "80px",opacity:"0"}).hide();
+		});
+	});
+});
+

@@ -1,0 +1,236 @@
+$(function(){
+	// 我的卡木乐斯 购物车结算
+	$(".hd_show_hide").hover(function(){
+		$(this).find("dd").show();
+	},function(){
+		$(".hd_show_hide dd").hide();
+	});
+
+	// 关闭广告
+	$(".hd_banner .close").click(function(){
+		$(".hd_banner").slideUp();
+	});
+
+	 //选酒中心
+	$(".hd_nav .wine_list").hover(function(){
+		$(".list_text").show();
+	},function(){
+		$(".list_text").hide();
+	}) 
+
+	// 选酒中心二级列表
+	$(".list_text dl").hover(function(){
+		$(this).addClass("active");
+	},function(){
+		$(this).removeClass("active");
+	});
+
+	// 主导航
+	$(".nav dl").hover(function(){
+		$(this).addClass("active");
+	},function(){
+		$(this).removeClass("active");
+	});
+	
+	// 右侧导航
+	$(".bar_nav dl").hover(function(){
+		$(this).addClass("active");
+	},function(){
+		$(this).removeClass("active");
+	});
+	$(".bar_nav dl").last().addClass("bor");
+
+	//关注卡木乐斯
+	$(".toplist li.hover").hover(function(){
+			$(this).addClass("active");
+		},function(){
+			$(this).removeClass("active");
+	});
+	
+	//尾部微信
+	$("#foot .list .ft_wx").hover(function(){
+			$(".ft_ico_wx").show();
+		},function(){
+			$(".ft_ico_wx").hide();
+	});
+})
+	
+String.prototype.startWith=function(s){
+if(s==null||s==""||this.length==0||s.length>this.length)
+	return false;
+if(this.substr(0,s.length)==s)
+	return true;
+else
+	return false;
+return true;
+}
+
+function clearDefault(){
+	if($("#search").val()=="输入你想要查找的商品"){
+		$("#search").val("");
+	}
+}
+
+function setDefault(){
+	if($("#search").val()==""){
+		$("#search").val("输入你想要查找的商品");
+	}
+}
+
+function search(){
+	var searchKey = $("#search").val();
+	var path = $("#top_path").val();
+	var cpage = $("#cpage").val();
+	if(path==null) 
+		path='';
+	if(cpage==null) 
+		cpage=1;
+	if(searchKey == "输入你想要查找的商品" || searchKey ==""){
+		alert("输入你想要查找的商品");
+	}else{
+		$.post('/json/search_obtainKeywordId.shtml?m=' + Math.random(),{"keyword":searchKey,"searchType":1,'page':cpage},function(data){
+			var keywordId = data.keywordId;
+			if(keywordId != null){
+				if(path==''){
+					window.location="/p-list/k"+keywordId+".shtml";
+				}else{
+					if(path.startWith("-")){
+						path = path.substring(1);
+					}
+					window.location="/p-list/"+path+"-k"+keywordId+".shtml";
+				}
+			}
+		});
+	}
+}
+
+function goCartManager(){
+	var url = window.location.href;
+	$.getJSON('/json/shoppingcart_saveUrlCookie.shtml?m=' + Math.random(),{"urll":url},function(data){
+		window.location.href="/cart_showShoppingCart.shtml";
+	});
+
+}
+
+function getCookie(cookieName) { 
+	var cookies=document.cookie.split("; ");
+	if (!cookies.length) {
+		return "";
+	} 
+	var pair=["",""]; 
+	for (var i=0;i< cookies.length;i++) {
+		pair = cookies[i].split("=");
+		if (pair[0]==cookieName) {
+			break; 
+			} 
+	} 
+	return pair[1]; 
+} 
+
+function getviewTopHistory(){
+	$("#topzjll").empty();
+	var pts = getCookie("product_info");
+	var strs = pts.split(":");
+	var url = "";
+	for(var i=0;i< strs.length;i++){
+		var str = strs[i].split(",");
+		if(i == 0){
+			url  = str[0].substring(1,str[0].length);
+		}else{
+			url = str[0];
+		}
+		if(str[2] != null){
+			if(i == strs.length - 1 ){
+				$("#topzjll").append('<li><a href="/product/pro_detail_-'+url+'.shtml" target="_blank" title="'+str[2]+'"><img src="http://www.winenice.com/'+str[2]+'" alt="'+str[2]+'"/></a>');
+			}else{
+				$("#topzjll").append('<li><a href="/product/pro_detail_-'+url+'.shtml" target="_blank" title="'+str[2]+'"><img src="http://www.winenice.com/'+str[2]+'" alt="'+str[2]+'"/></a>');
+			}
+		}
+	}
+}
+
+function getTopValidateUser(){
+$.getJSON("/json/user_topValidateUser.shtml?m="+ Math.random(),function(data){
+   var toploginName=data.showmsg;
+   var headShow=data.headShow;
+   var jifenUrl=data.jifenUrl;
+   if(toploginName==null || toploginName==""){
+   		toploginName=data.toploginName;
+   }else{
+   		if(toploginName.length>10){
+   			toploginName = toploginName.substring(0,10)+"...";
+   		}
+   }			
+   if(toploginName!=""){
+        $("#hello").html('您好，'+toploginName+'，欢迎来到卡木乐斯网！<s>|</s><a href="/user/user_loginOut.shtml">[退出]</a>');
+   		$("#hello_jiumei").html('<span class="fll">您好，'+toploginName+'</span><a class="flr btn" href="/user/user_loginOut.shtml">退出</a>');
+   }
+   if(headShow !=null && headShow!=""){
+    	$("#cb_head_info").removeClass("none");
+        $("#cb_headshow").html(headShow);
+        $("#cb_showmsg").html(toploginName);
+        $("#cb_jifenurl").html("<a target='_blank' href="+jifenUrl+">我的积分</a>");
+   }else{
+   		$("#cb_head_info").addClass("none");
+   }
+   
+   	//避开图片延时加载
+		$(".Scrcont img").attr("name","VipBrand");
+		$(".change_cont img").attr("name","VipBrand"); 		
+		$("#ranking_focus_chang img").attr("name","VipBrand");
+		$("#ranking_focus_chang_two img").attr("name","VipBrand");
+		$(".left_nav_top img").attr("name","VipBrand");
+
+});
+}
+		
+var domain1="www.jiumei.com";
+var domain2="www.winenice.com";
+var mydomain="";
+var domain=location.hostname;
+if(domain == domain1)
+	mydomain = domain2;
+else
+	mydomain = domain1;
+$.ajax( {
+ 	async:false,
+	type : "get",
+	url : "http://"+mydomain+"/cookieSet.jsp?r=" + Math.random(),
+	data : "",
+	dataType : "jsonp",
+	jsonp : 'jsoncallback',
+	success : function(data1) {
+		if(data1.id!=0){
+			$.ajax( {
+				async:false,
+				type : "get",
+				url : "http://"+domain+"/cookieSync.jsp?r="
+						+ Math.random(),
+				data : "id=" + data1.id,
+				dataType : "text",
+				success : function(data2) {
+							getTopValidateUser();
+							getShoppingCart_new();
+							getviewTopHistory();
+				},
+				error : function(XMLHtppRequest, textStatus,
+						errorThrow) {
+							getTopValidateUser();
+							getShoppingCart_new();
+							getviewTopHistory();
+
+				}
+			});
+		}
+	},
+	error : function(XMLHtppRequest, textStatus, errorThrow) {
+		getTopValidateUser();
+		getShoppingCart_new();
+		getviewTopHistory();
+	}
+});
+
+//getShoppingCart_new();
+//getviewTopHistory();
+
+

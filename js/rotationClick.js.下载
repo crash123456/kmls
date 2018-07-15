@@ -1,0 +1,78 @@
+// JavaScript Document
+$.fn.extend({
+	rotationClick:function(thisClass,paClass,liClass,btnLeftClass,btnRightClass,flag){
+		
+	var left=0;
+	var interval;
+	var liW=$("."+thisClass).find("."+liClass).outerWidth(flag);/*$(".big_div .J_li").outerWidth();*/
+	var liLen=$("."+thisClass).find("."+liClass).length;/*$(".big_div .J_li").length;*/
+	var timeout=5000;
+	var ulW=liW*liLen;
+	var contentHtml=$(this).find(".J_tian").html();/*$(".big_div .J_tian").html();*/
+	
+	$(this).find(".J_tian2").html(contentHtml);
+	
+	function scrollC(){
+		
+		if($(this).find("."+paClass).is(":animated")){
+			
+			return false;
+		}
+		//alert(ulW);
+		if(left>-(ulW-liW))
+		{
+			//alert(ulW);
+			left-=liW;
+			$("."+thisClass).find("."+paClass).animate({left:left+"px"},500);
+			
+		}else{
+			left-=liW;
+			$("."+thisClass).find("."+paClass).animate({left:left+"px"},500,function(){
+				left=0;
+				
+				$("."+thisClass).find("."+paClass).css("left",left+"px");
+				
+				});
+			
+		}
+	}
+	interval=window.setInterval(scrollC,timeout);
+	$("."+thisClass).find("."+liClass).hover(function(){
+		window.clearInterval(interval);
+		},function(){
+			interval=window.setInterval(scrollC,timeout);
+			});	
+	$("."+btnLeftClass).click(function(){
+		window.clearInterval(interval);
+		if($("."+thisClass).find("."+paClass).is(":animated")){
+			return false;
+		}
+		if(left>=0){
+			left=-liW*liLen;
+			$("."+thisClass).find("."+paClass).css("left",left+"px");
+		}
+		left+=liW;
+		$("."+thisClass).find("."+paClass).animate({left:left+"px"},500);
+		interval=window.setInterval(scrollC,timeout);
+		});
+	$("."+btnRightClass).click(function(){
+		window.clearInterval(interval);
+		if($("."+thisClass).find("."+paClass).is(":animated")){
+			return false;
+		}
+		/*if(left<=-liW*liLen){
+			left=0;
+			$(".big_div .contant_div").css("left",left+"px");
+		}*/
+		left-=liW;
+		$("."+thisClass).find("."+paClass).animate({left:left+"px"},500,function(){
+			if(left<=-liW*liLen){
+			left=0;
+			$("."+thisClass).find("."+paClass).css("left",left+"px");
+		}
+			});
+		
+		interval=window.setInterval(scrollC,timeout);
+		});
+	}
+});

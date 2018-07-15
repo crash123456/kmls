@@ -1,0 +1,23 @@
+// JavaScript Document
+$.fn.extend({
+	tabs:function(firstC,secondC,addC){
+		$(this).find("."+firstC).each(function(index, element) {
+           $(this).mouseover(function(){
+			   $("."+firstC).removeClass(addC);
+			   $(this).addClass(addC);
+			   $("."+secondC+":eq("+index+")").show().siblings("."+secondC).hide();
+			   });
+        });
+		}
+	});
+$.fn.extend({
+	across:function(addClass){
+		$(this).hover(function(){
+			$(this).addClass(addClass);
+			$(this).find(".numD").show();
+			},function(){
+				$(this).removeClass(addClass);
+				$(this).find(".numD").hide();
+				});
+		}
+	});

@@ -1,0 +1,1080 @@
+﻿var isGiftOrder = 0;
+var isShowPrice = 1;
+var toUser="";
+var showFromUser=1;
+var fromUser="";
+var productNo="";
+var productName="";
+var wishing="";
+var fontType="";
+var printTime="";
+var cardType="01";
+var lastProductNo="";
+var isLiubai=false;
+var pro_no_name = "hk000001:新年快乐 万事如意:01,hk000002:浪漫一生 幸福相随:02,hk000003:美酒祝福 品味人生:03,hk000004:良辰佳酿 庆贺生辰:04"; 
+String.prototype.replaceAll = function(s1,s2) { 
+    return this.replace(new RegExp(s1,"gm"),s2); 
+}
+
+String.prototype.startWith=function(s){
+if(s==null||s==""||this.length==0||s.length>this.length)
+	return false;
+if(this.substr(0,s.length)==s)
+	return true;
+else
+	return false;
+return true;
+}
+//addAllProducts('rg000009:1,rg000785:2');
+function addAllProducts(productAndNums){////rg0001:1,re0002:2
+	$.getJSON('/json/shoppingcart_addAllCartDoAjax.shtml?m=' + Math.random(),{"productNoAndQuantitys":productAndNums},function(data){
+		var message = data.message;
+		if(message==0){
+			getShoppingCart(1);
+		}else{
+			alert("库存不足");
+		}
+	});
+}
+
+function addGreetingCard(productAndNums){////rg0001:1,re0002:2
+	if(lastProductNo != ""){
+		deleteGreetingCardByNo(lastProductNo);
+	}
+	$.getJSON('/json/shoppingcart_addAllCartDoAjax.shtml?m=' + Math.random(),{"productNoAndQuantitys":productAndNums,"notAddNum":1},function(data){
+		var message = data.message;
+		if(message==0){
+			closeLayer("popup_close","J_4",'false');
+			popupLayer("J_5_show","J_5");
+		}else{
+			alert("贺卡库存不足");
+		}
+	});
+//	closeLayer("popup_close","J_4",'false');
+//	popupLayer("J_5_show","J_5");
+}
+
+function deleteGreetingCardByNo(product_no) {
+	if (product_no != null) {
+		$.getJSON('/json/shoppingcart_deleteCartByNoDoAjax.shtml?product_no='+product_no+'&m=' + Math.random(), function(data) {
+		});
+	}
+}
+
+
+function addShoppingCart(product_no, quantity,addType) {
+	if (product_no != null && quantity > 0) {
+		$.getJSON('/json/shoppingcart_addCartDoAjax.shtml?product_no=' + product_no + '&quantity=' + quantity + '&m=' + Math.random(), function(data) {
+			if (data.message == "insertSuccess") {
+				
+				if(addType=="shoppingCart"){// 
+					//刷新购物车
+					getShoppingCartMain();
+				}else{// 商品加入购物车 弹出框加载 专用方法
+					var isnew =$("#topcartCount").html();
+					if(isnew == null){
+						getShoppingCart(product_no);
+					}else{// 对应右上角的商品总数
+						getShoppingCart_new(product_no);
+					}
+				}
+				
+			} else if (data.message == "inventoryshortage") {
+				alert("您购买的商品库存不够，请重新选择购买数量");
+//				if(addType=="shoppingCart"){
+//					//刷新购物车
+//					getShoppingCartMain();
+//				}else{
+//					getShoppingCart(product_no);
+//				}
+			} else if (data.message == "noinventory") {
+				alert("您所选的商品没库存!");
+			} else if (data.message == "bctznoinventory") {
+				alert("该套装库存不足!");
+			}else if(data.message != null && data.message.indexOf("promnum_error") > -1) {
+				var specValues= new Array();
+				specValues = data.message.split(";");
+				var productId2 = "";
+				var proNumber = 0;
+				if(specValues.length == 3) {
+					productId2 = specValues[2];
+					proNumber = parseInt(specValues[1]);
+				}
+				//计算限时抢购信息
+				if(productId2 != null && productId2 != ""){
+					var product = data.addProduct;
+					if(product != null){
+						var promNumStartHour= product.promNumStartHour;
+						var promNumEndHour = product.promNumEndHour;
+						var promNumStartMinute = product.promNumStartMinute;
+						var promNumEndMinute = product.promNumEndMinute;
+						if(promNumStartHour == null || promNumStartHour == ""){
+							promNumStartHour="00";
+						}
+						if(promNumEndHour == null || promNumEndHour == ""){
+							promNumEndHour="00";
+						}
+						if(promNumStartMinute == null || promNumStartMinute == ""){
+							promNumStartMinute="00";
+						}
+						if(promNumEndMinute == null || promNumEndMinute == ""){
+							promNumEndMinute="00";
+						}
+						if(quantity > proNumber){
+							quantity = proNumber;
+						}else{
+							if(data.productCount > 0){
+								quantity = data.productCount;
+							}else{
+								quantity = 1;
+							}
+						}
+						//alert("您购买的商品："+product.productNo+"，在"+product.promNumStartDate+" "+promNumStartHour+":"+promNumStartMinute+"到"+product.promNumEndDate+" "+promNumEndHour+":"+promNumEndMinute+"期间每位会员限购"+proNumber+"件。");
+						alert("尊敬的用户：该商品正参加限量促销活动，每位会员限购"+proNumber+"件。感谢您对卡木乐斯网的支持，祝您购物愉快！");
+					}
+				}
+			}else if (data.message == "specialSellLimit") {
+				alert("该商品为特卖商品，已达到限制购买上限！");
+			}
+			
+			
+		});
+	}
+}
+
+
+
+function addZxToShoppingCart(product_no, quantity,addType) {
+	if (product_no != null && quantity > 0) {
+		$.getJSON('/json/shoppingcart_addZxtzToCart.shtml?product_no=' + product_no + '&quantity=' + quantity + '&m=' + Math.random(), function(data) {
+			if (data.message == "insertSuccess") {
+//				if(addType=="shoppingCart"){
+//					//刷新购物车
+//					getShoppingCartMain();
+//				}else{
+//					getShoppingCart(product_no);
+//				}
+				window.location.href="/cart_showShoppingCart.shtml";
+			}else if (data.message == "repeatprono") {
+				alert("抱歉，目前一个订单同一编号自选套装只能选一件，您可再次下单自选该编号套装!");
+			}else if (data.message == "invalidZxTz") {
+				alert("自选礼包无效，违反规则!");
+			}else if (data.message == "noinventory") {
+				alert("您所选的商品没库存!");
+			}else if (data.message == "bczxtznoinventory") {
+				alert("该套装库存不足!");
+			}else if (data.message == "inventoryshortage") {
+				alert("您购买的商品库存不够，请重新选择购买数量!");
+			}
+		});
+	}
+}
+
+function updateShoppingCart(product_no, quantity) {
+		if (product_no != null && quantity > 0) {
+			if(product_no.startWith("zx")){
+				$.getJSON('/json/shoppingcart_updateZxtz.shtml?product_no=' + product_no + '&quantity=' + quantity + '&m=' + Math.random(),function(data) {
+					if (data.message == "insertSuccess") {
+						//刷新购物车
+						getShoppingCartMain();
+					}else if (data.message == "noinventory") {
+						alert("您所选的商品没库存!");
+					}else if (data.message == "bczxtznoinventory") {
+						alert("该套装库存不足!");
+					}else if (data.message == "inventoryshortage") {
+						alert("您购买的商品库存不够，请重新选择购买数量!");
+					}
+				});
+			}else{
+				$.getJSON('/json/shoppingcart_updateCartDoAjax.shtml?product_no=' + product_no + '&quantity=' + quantity + '&m=' + Math.random(),function(data) {
+					if (data.message == "updateSuccess") {
+						getShoppingCartMain();
+					} else if (data.message == "inventoryshortage") {
+						alert("您购买的商品库存不够，请重新选择购买数量");
+						//getShoppingCartMain();
+					} else if (data.message == "noinventory") {
+						alert("您所选的商品没库存!");
+					} else if (data.message == "bctznoinventory") {
+						alert("该套装库存不足!");
+					}else if(data.message != null && data.message.indexOf("promnum_error") > -1) {
+						var specValues= new Array();
+						specValues = data.message.split(";");
+						var productId2 = "";
+						var proNumber = 0;
+						if(specValues.length == 3) {
+							productId2 = specValues[2];
+							proNumber = parseInt(specValues[1]);
+						}
+						//计算限时抢购信息
+						if(productId2 != null && productId2 != ""){
+							var product = data.addProduct;
+							if(product != null){
+								var promNumStartHour= product.promNumStartHour;
+								var promNumEndHour = product.promNumEndHour;
+								var promNumStartMinute = product.promNumStartMinute;
+								var promNumEndMinute = product.promNumEndMinute;
+								if(promNumStartHour == null || promNumStartHour == ""){
+									promNumStartHour="00";
+								}
+								if(promNumEndHour == null || promNumEndHour == ""){
+									promNumEndHour="00";
+								}
+								if(promNumStartMinute == null || promNumStartMinute == ""){
+									promNumStartMinute="00";
+								}
+								if(promNumEndMinute == null || promNumEndMinute == ""){
+									promNumEndMinute="00";
+								}
+								if($("#number_"+product.productNo).val() > proNumber){
+									$("#number_"+product.productNo).val(proNumber);
+								}else{
+									if(data.productCount > 0){
+										$("#number_"+product.productNo).val(data.productCount);
+									}else{
+										$("#number_"+product.productNo).val(1);
+									}
+								}
+								//alert("您购买的商品："+product.productNo+"，在"+product.promNumStartDate+" "+promNumStartHour+":"+promNumStartMinute+"到"+product.promNumEndDate+" "+promNumEndHour+":"+promNumEndMinute+"期间每位会员限购"+proNumber+"件。");
+								alert("尊敬的用户：该商品正参加限量促销活动，每位会员限购"+proNumber+"件。感谢您对卡木乐斯网的支持，祝您购物愉快！");
+							}
+						}
+					}
+				});
+			}
+		}
+}
+
+function updateShoppingCartMulCondition(product_no, quantity) {
+	if (product_no != null && quantity > 0) {
+		if(product_no.startWith("zx")){
+			$.getJSON('/json/shoppingcart_updateZxtz.shtml?product_no=' + product_no + '&quantity=' + quantity + '&m=' + Math.random(),function(data) {
+				if (data.message == "insertSuccess") {
+					//刷新购物车
+					getShoppingCartMain();
+				}else if (data.message == "noinventory") {
+					alert("您所选的商品没库存!");
+				}else if (data.message == "bczxtznoinventory") {
+					alert("该套装库存不足!");
+				}else if (data.message == "inventoryshortage") {
+					alert("您购买的商品库存不够，请重新选择购买数量!");
+				}
+			});
+		}else{
+			$.getJSON('/json/shoppingcart_updateCartDoAjaxMulCondition.shtml?product_no=' + product_no + '&quantity=' + quantity + '&m=' + Math.random(),function(data) {
+				if (data.message == "updateSuccess") {
+					getShoppingCartMain();
+				} else if (data.message == "inventoryshortage") {
+					alert("您购买的商品库存不够，请重新选择购买数量");
+					//getShoppingCartMain();
+				} else if (data.message == "noinventory") {
+					alert("您所选的商品没库存!");
+				} else if (data.message == "bctznoinventory") {
+					alert("该套装库存不足!");
+				}else if (data.message == "specialSellLimit") {
+					alert("特卖商品达到限制购买数，不能再继续购买！");
+				}else if(data.message != null && data.message.indexOf("promnum_error") > -1) {
+					var specValues= new Array();
+					specValues = data.message.split(";");
+					var productId2 = "";
+					var proNumber = 0;
+					if(specValues.length == 3) {
+						productId2 = specValues[2];
+						proNumber = parseInt(specValues[1]);
+					}
+					//计算限时抢购信息
+					if(productId2 != null && productId2 != ""){
+						var product = data.addProduct;
+						if(product != null){
+							var promNumStartHour= product.promNumStartHour;
+							var promNumEndHour = product.promNumEndHour;
+							var promNumStartMinute = product.promNumStartMinute;
+							var promNumEndMinute = product.promNumEndMinute;
+							if(promNumStartHour == null || promNumStartHour == ""){
+								promNumStartHour="00";
+							}
+							if(promNumEndHour == null || promNumEndHour == ""){
+								promNumEndHour="00";
+							}
+							if(promNumStartMinute == null || promNumStartMinute == ""){
+								promNumStartMinute="00";
+							}
+							if(promNumEndMinute == null || promNumEndMinute == ""){
+								promNumEndMinute="00";
+							}
+							if($("#number_"+product.productNo).val() > proNumber){
+								$("#number_"+product.productNo).val(proNumber);
+							}else{
+								if(data.productCount > 0){
+									$("#number_"+product.productNo).val(data.productCount);
+								}else{
+									$("#number_"+product.productNo).val(1);
+								}
+							}
+							//alert("您购买的商品："+product.productNo+"，在"+product.promNumStartDate+" "+promNumStartHour+":"+promNumStartMinute+"到"+product.promNumEndDate+" "+promNumEndHour+":"+promNumEndMinute+"期间每位会员限购"+proNumber+"件。");
+							alert("尊敬的用户：该商品正参加限量促销活动，每位会员限购"+proNumber+"件。感谢您对卡木乐斯网的支持，祝您购物愉快！");
+						}
+					}
+				}
+			});
+		}
+	}
+}
+
+function deleteIndexShoppingCartByNo(product_no) {
+	if (product_no != null) {
+		$.getJSON('/json/shoppingcart_deleteCartByNoDoAjaxMulCondition.shtml?product_no='+ product_no + '&cartManagerProductsId=topdel&m=' + Math.random(), function(data) {
+			getShoppingCart();
+		});
+	}
+}
+function deleteIndexShoppingCartByNo_new(product_no) {
+	if (product_no != null) {
+		$.getJSON('/json/shoppingcart_deleteCartByNoDoAjaxMulCondition.shtml?product_no='+ product_no + '&cartManagerProductsId=topdel&m=' + Math.random(), function(data) {
+			getShoppingCart_new();
+		});
+	}
+}
+function deleteShoppingCartByNo(product_no,cmpId) {
+	if(confirm('确定将此商品删除?')){
+		if (product_no != null) {
+			$.getJSON('/json/shoppingcart_deleteCartByNoDoAjax.shtml?product_no='+ product_no + '&cartManagerProductsId='+cmpId+'&m=' + Math.random(), function(data) {
+				getShoppingCartMain();
+			});
+		}
+	}
+}
+
+/**
+ * 多条件下，购物车的删除
+ * @param product_no
+ * @param cmpId
+ */
+function deleteShoppingCartByNoMulCondition(product_no,cmpId) {
+	if(confirm('确定将此商品删除?')){
+		if (product_no != null) {
+			$.getJSON('/json/shoppingcart_deleteCartByNoDoAjaxMulCondition.shtml?product_no='+ product_no + '&cartManagerProductsId='+cmpId+'&m=' + Math.random(), function(data) {
+				getShoppingCartMain();
+			});
+		}
+	}
+}
+
+/**
++ * 删除提货卡的购物车
++ * @param product_no
++ * @param cmpId
+ */
+function deleteShoppingCartOfTh(deleteType) {
+	if(confirm('确定将此商品删除?')){
+			$.getJSON('/json/shoppingcart_deleteShoppingCartOfTh.shtml?m=' + Math.random(), function(data) {
+				getShoppingCartMain();
+			});
+	}
+}
+
+function deleteShoppingCart() {
+	if(confirm('确定清空购物车?')){
+		$.getJSON('/json/shoppingcart_deleteCartAllDoAjax.shtml?m=' + Math.random(),function(data) {
+			window.location.href = "/";
+			defIsGiftHelper();
+		});
+	}
+}
+
+function deleteShoppingCartMulCondition(orderType) {
+	if(confirm('确定清空购物车?')){
+		$.getJSON('/json/shoppingcart_deleteCartAllDoAjaxMulCondition.shtml?orderType='+orderType+'&m=' + Math.random(),function(data) {
+			getShoppingCartMain();
+			defIsGiftHelper();
+		});
+	}
+}
+
+function getShoppingCartCount() {
+	$.getJSON('/json/shoppingcart_getCartCount.shtml?m=' + Math.random(), function(data) {
+		$("#cartNum").html(data.shoppingCartCount);
+		document.getElementById("cartbox").style.display="block";
+		document.getElementById("spm").style.display="block";
+	});
+}
+
+
+function allShoucang(){
+	$.getJSON('/json/shoppingcart_allShouCang.shtml?m=' + Math.random(), function(data) {
+		var allShouCangMsg = data.allShouCangMsg;
+		if(allShouCangMsg==0){
+			alert("收藏成功");
+		}else if(allShouCangMsg==1){
+			alert("请先登录");
+		}
+	});
+}
+
+
+
+function getShoppingCart(obj) {
+	//先弹出框
+	if(typeof(obj)!="undefined"){
+		var objDeck=document.getElementById("spm");
+		if(objDeck != null){
+			$("#fontNum").html("加载中...");
+		    $("#fontAmount").html("加载中...");
+			document.getElementById("cartbox").style.display="block";
+			document.getElementById("spm").style.display="block";
+		}
+	}
+	$.getJSON('/json/shoppingcart_getCartList.shtml?m=' + Math.random(), function(data) {
+		var str = "";
+		if(data.cookiesCartList != null && data.cookiesCartList.length > 0){
+			
+			str+='<div class="totalN"><strong>';
+			str+='<span class="color0">共&nbsp;</span><span class="colorb00 font16" id="topcartSpanNum">0</span><span class="color0">&nbsp;件商品</span></strong>';
+			str+='</div><div class=" noShop none"><span></span><strong class="colorb00 font16"></strong>';
+			str+='</div>';
+			str+='<div class="shopcar_1">';
+			
+			var length = 0;
+			for ( var i = 0; i < data.cookiesCartList.length; i++) {
+				var cart = data.cookiesCartList[i];
+				
+				length += cart.number;
+				if(cart != null){
+					var url = "/product/pro_detail_-" + cart.product.productNo + ".shtml";
+					var urlColledge = "/course_online.dhtml";
+					//str += '<li class="clear sli">';
+					//str += '<p class="pss"><a href="'+url+'"><img src="'+cart.product.smallPicture+'" width="40" height="60"/></a></p>';
+					//str += '<div class="ddiv">';
+					var name = cart.product.shortName;
+					if(name.length > 16){
+						name = name.substring(0,16) + "...";
+					}
+					var pimgUrl = cart.product.smallPicture;
+					var type = cart.type;
+					if(type=="2"){
+						str+='<div class="sub_shop clearfix"><a class="shopcarL fll" href="'+urlColledge+'">';
+					}else{
+						str+='<div class="sub_shop clearfix"><a class="shopcarL fll" href="'+url+'">';
+					}
+					str+='<img src="'+pimgUrl+'"  height="60px" width="40px"/></a>';
+					
+					if(type=="2"){
+						str+='<div class="shopcarC fll"><h3><a href="'+urlColledge+'" class="color6">'+name+'</a></h3></div>';
+					}else{
+						str+='<div class="shopcarC fll"><h3><a href="'+url+'" class="color6">'+name+'</a></h3></div>';
+					}
+					
+					str+='<div class="shopcarR flr">';
+					str+='<p class="colorb00"><strong>￥'+cart.product.unitPrice+'</strong></p>';
+					str+='<p class="colorb00">×'+cart.number+'</p>';
+					str+='<p class="color06c">[<a href="javascript:void(0);" onclick="deleteIndexShoppingCartByNo(\''+cart.product.productNo+'\');">删除</a>]</p></div></div>';
+					str+='';
+					//str += '<h4><a href="'+url+'" title="'+cart.product.shortName+'">'+name+'</a></h4>';
+					//str += '<p class="clear">';
+					//str += '<span>￥'+cart.product.unitPrice+'×'+cart.number+'</span>';
+					//str += "<a href='javascript:deleteIndexShoppingCartByNo(\""+cart.product.productNo+"\");'>删除</a>";
+					//str += '</p>';
+					//str += '</div>';
+					//str += '</li>';
+				}
+			}
+			str+='<p class="totalM clearfix"><span class="fll">共&nbsp;<strong class="colorb00">'+length+'</strong>&nbsp;件商品</span>';
+			str+='<span class="flr">金额共计：<strong class="colorb00 font16">￥'+data.allCookiesPrice+'</strong></span></p>';
+			str+='<p class="clearfix"><a href="javascript:void(0);" onclick="goCartManager()" class=" add_cart"></a></p></div>';
+			str+='<div class="celS color06c">';
+			str+='[<a href="javascript:void(0);" onclick="allShoucang();" class="color06c">收藏全部</a>]';
+			str+='</div></div>';
+			str+='';
+			str+='';
+			//str += '</ul>';
+			//str += '<div class="shopping">';
+			//str += '<span>共<strong>'+length+'</strong>件商品</span><span style="padding-right:0px;">金额总计：</span><strong>￥'+data.allCookiesPrice+'</strong>';
+			//str += '<p class="clear"><a href="/cart_showShoppingCart.shtml">去购物车结算</a></p>';
+			//str += '</div>';
+			//str += ' <div class="count-bottom"></div>';
+			$("#countdiv").html(str);
+			$("#topcartDivNum").html(length);
+			$("#topcartSpanNum").html(length);
+			if(typeof(obj)!="undefined"){
+				var objDeck=document.getElementById("spm");
+				if(objDeck != null){
+					objDeck.style.filter="alpha(opacity=50)";
+				    objDeck.style.opacity=40/100;
+				    objDeck.style.MozOpacity=40/100;
+				    
+				    $("#fontNum").html(length);
+				    $("#fontAmount").html(data.allCookiesPrice);
+				    if(obj!=1){
+				    $.getJSON("/json/product_buyhistory.shtml",{'productNo':obj},function(data){
+				    	
+						var list = data.buyList;
+						var imgUrlScr=data.imgUrlScr;
+						if(list != null && list.length > 0){
+							var len = list.length;
+							if(len>2){
+								len=2;
+							}
+							var hisStr='<p class="color6">购买该商品的人还购买过：</p>';
+							for(var i=0;i< len;i++){
+								hisStr+='<dl class="ttc">';
+								hisStr+='<dt><a href="/product/pro_detail_-'+list[i][4]+'.shtml" target = "_blank"><img src="'+imgUrlScr+list[i][9]+'"/></a></dt>';
+								hisStr+='<dd><a href="/product/pro_detail_-'+list[i][4]+'.shtml" target = "_blank" class="color6">'+list[i][1]+'</a></dd>';
+								if(list[i][8] != null && list[i][8] == 1 && list[i][6] != null && list[i][6] == 0){
+									hisStr+='<dd><span class="color90 ttc">促销价:￥'+returnFloat2(list[i][7])+'</span><span class="color9 ttc">市场价:￥'+returnFloat2(list[i][2])+'</span></dd>';
+								}
+								if(list[i][8] != null && list[i][8] == 1 && list[i][6] != null && list[i][6] == 1){
+									hisStr+='<dd><span class="color90 ttc">特卖价:￥'+returnFloat2(list[i][7])+'</span><span class="color9 ttc">市场价:￥'+returnFloat2(list[i][2])+'</span></dd>';
+								}
+								if(list[i][8] != null && list[i][8] == 1 && list[i][6] != null && list[i][6] == 2){
+									hisStr+='<dd><span class="color90 ttc">闪购价:￥'+returnFloat2(list[i][7])+'</span><span class="color9 ttc">市场价:￥'+returnFloat2(list[i][2])+'</span></dd>';
+								}
+								if(list[i][8] != null && list[i][8] == 1 && list[i][6] != null && list[i][6] == 3){
+									hisStr+='<dd><span class="color90 ttc">尝鲜价:￥'+returnFloat2(list[i][7])+'</span><span class="color9 ttc">市场价:￥'+returnFloat2(list[i][2])+'</span></dd>';
+								}
+								if(list[i][8] != null && list[i][8] == 0 ){
+									hisStr+='<dd><span class="color90 ttc">卡木乐斯价:￥'+returnFloat2(list[i][3])+'</span><span class="color9 ttc">市场价:￥'+returnFloat2(list[i][2])+'</span></dd>';
+								}
+								hisStr+='<dd><a href="javascript:void(0);" onclick="addShoppingCart(\''+list[i][4]+'\',\'1\')" class="buy">&nbsp;</a></dd></dl>';
+							}
+							$("#hisListDiv").html(hisStr);
+						}
+					});
+				    }
+				}
+			}
+			
+		}else{
+			
+			str+='<div class="totalN"><strong>';
+			str+='<span class="color0">共&nbsp;</span><span class="colorb00 font16" id="topcartSpanNum">0</span><span class="color0">&nbsp;件商品</span></strong>';
+			str+='</div><div class=" noShop none"><span></span><strong class="colorb00 font16"></strong>';
+			str+='</div>';
+			str+='<div class="shopcar_1">';
+			str+='<p class="totalM clearfix"><span class="fll"><strong class="colorb00"></strong></span>';
+			str+='<span class="flr">金额共计：<strong class="colorb00 font16">￥0.0</strong></span></p>';
+			str+='<p class="clearfix"></div>';
+			str+='<div class="celS color06c">';
+			str+='</div></div>';
+			
+			$("#topcartDivNum").html("0");
+			$("#countdiv").html(str);
+		}
+	});
+}
+
+function getShoppingCart_new(obj) {
+	//先弹出框
+	if(typeof(obj)!="undefined"){
+		var objDeck=document.getElementById("spm");
+		if(objDeck != null){
+			$("#fontNum").html("加载中...");
+		    $("#fontAmount").html("加载中...");
+			document.getElementById("cartbox").style.display="block";
+			document.getElementById("spm").style.display="block";
+		}
+	}
+	$.getJSON('/json/shoppingcart_getCartList.shtml?m=' + Math.random(), function(data) {
+		var str = "";
+		if(data.cookiesCartList != null && data.cookiesCartList.length > 0){
+			str+='<p class="bg"></p>';
+			str+='<div class="shopcart_t">共<strong id="topcartSpanNum"></strong>件商品</div>';
+			str+='<ul class="shop_list clearfix">';
+			var length = 0;
+			for ( var i = 0; i < data.cookiesCartList.length; i++) {
+				var cart = data.cookiesCartList[i];
+				length += cart.number;
+				if(cart != null){
+					var url = "/product/pro_detail_-" + cart.product.productNo + ".shtml";
+					var urlColledge = "/course_online.dhtml";
+					var type = cart.type;
+					var name = cart.product.shortName;
+					if(name.length > 16){
+						name = name.substring(0,16) + "...";
+					}
+					var pimgUrl = cart.product.smallPicture;
+					if(type=="2"){
+						str+='<li><a class="p_img" href="'+urlColledge+'" target="_blank">';
+					}else{
+						str+='<li><a class="p_img" href="'+url+'" target="_blank">';
+					}
+					str+='<img src="'+pimgUrl+'" alt="'+name+'"/></a>';
+					if(type=="2"){
+						str+='<p class="p_name"><a href="'+urlColledge+'" target="_blank" title="'+name+'">'+name+'</a></p>';
+					}else{
+						str+='<p class="p_name"><a href="'+url+'" target="_blank" title="'+name+'">'+name+'</a></p>';
+					}
+					str+='<div class="list_detail">';
+					str+=' <p><strong>￥'+cart.product.unitPrice+'</strong></p>';
+					str+='<p>×'+cart.number+'</p>';
+					str+=' <p class="btn_delete">[<a href="javascript:void(0);" onclick="deleteIndexShoppingCartByNo_new(\''+cart.product.productNo+'\');">删除</a>]</p>';
+					str+='</li>';
+				}
+			}
+			str+='<p class="sum clearfix"><span class="fll">共<strong>'+length+'</strong>件商品</span>';
+			str+='<span class="flr">金额共计：<strong class="colorb00 font16">￥'+data.allCookiesPrice+'</strong></span></p>';
+			str+='<p class="p_go clearfix"><a class="flr btn_go" href="javascript:void(0);" onclick="goCartManager()">去结算</a></p>';
+			str+='<p class="collect">[<a href="javascript:void(0);" onclick="allShoucang();">收藏全部</a>]</p>';
+			$("#topCart").html(str);
+			$("#topcartSpanNum").html(length);
+			$("#topcartCount").html(length);
+			if(typeof(obj)!="undefined"){
+				var objDeck=document.getElementById("spm");
+				if(objDeck != null){
+					objDeck.style.filter="alpha(opacity=50)";
+				    objDeck.style.opacity=40/100;
+				    objDeck.style.MozOpacity=40/100;
+				    $("#fontNum").html(length);
+				    $("#fontAmount").html(data.allCookiesPrice);
+				    if(obj!=1){
+					    $.getJSON("/json/product_buyhistory.shtml",{'productNo':obj},function(data){
+							var list = data.buyList;
+							var imgUrlScr=data.imgUrlScr;
+							if(list != null && list.length > 0){
+								var len = list.length;
+								if(len>2){
+									len=2;
+								}
+								var hisStr='<p class="color6">购买该商品的人还购买过：</p>';
+								for(var i=0;i< len;i++){
+									hisStr+='<dl class="ttc">';
+									hisStr+='<dt><a href="/product/pro_detail_-'+list[i][4]+'.shtml" target = "_blank"><img src="'+imgUrlScr+list[i][9]+'"/></a></dt>';
+									hisStr+='<dd><a href="/product/pro_detail_-'+list[i][4]+'.shtml" target = "_blank" class="color6">'+list[i][1]+'</a></dd>';
+									if(list[i][8] != null && list[i][8] == 1 && list[i][6] != null && list[i][6] == 0){
+										hisStr+='<dd><span class="color90 ttc">促销价:￥'+returnFloat2(list[i][7])+'</span><span class="color9 ttc">市场价:￥'+returnFloat2(list[i][2])+'</span></dd>';
+									}
+									if(list[i][8] != null && list[i][8] == 1 && list[i][6] != null && list[i][6] == 1){
+										hisStr+='<dd><span class="color90 ttc">特卖价:￥'+returnFloat2(list[i][7])+'</span><span class="color9 ttc">市场价:￥'+returnFloat2(list[i][2])+'</span></dd>';
+									}
+									if(list[i][8] != null && list[i][8] == 1 && list[i][6] != null && list[i][6] == 2){
+										hisStr+='<dd><span class="color90 ttc">闪购价:￥'+returnFloat2(list[i][7])+'</span><span class="color9 ttc">市场价:￥'+returnFloat2(list[i][2])+'</span></dd>';
+									}
+									if(list[i][8] != null && list[i][8] == 1 && list[i][6] != null && list[i][6] == 3){
+										hisStr+='<dd><span class="color90 ttc">尝鲜价:￥'+returnFloat2(list[i][7])+'</span><span class="color9 ttc">市场价:￥'+returnFloat2(list[i][2])+'</span></dd>';
+									}
+									if(list[i][8] != null && list[i][8] == 0 ){
+										hisStr+='<dd><span class="color90 ttc">卡木乐斯价:￥'+returnFloat2(list[i][3])+'</span><span class="color9 ttc">市场价:￥'+returnFloat2(list[i][2])+'</span></dd>';
+									}
+									hisStr+='<dd><a href="javascript:void(0);" onclick="addShoppingCart(\''+list[i][4]+'\',\'1\')" class="buy">&nbsp;</a></dd></dl>';
+								}
+								$("#hisListDiv").html(hisStr);
+							}
+						});
+				    }
+				}
+			}
+		}else{
+			str+='<p class="bg"></p>';
+			str+='<div class="shopcart_t">共<strong id="topcartSpanNum">0</strong>件商品</div>';
+			str+='<ul class="shop_list clearfix">';
+			str+='<span class="flr">金额共计：<strong class="colorb00 font16">￥'+data.allCookiesPrice+'</strong></span></p>';
+			$("#topCart").html(str);
+			$("#topcartCount").html(0);
+		}
+	});
+}
+
+//继续购物，或者关闭购物车弹出层
+function closecartBox(){
+	document.getElementById("cartbox").style.display="none";
+	document.getElementById("spm").style.display="none";
+}
+
+function getProName(pNo){
+	var pro_no_names = pro_no_name.split(",");
+	for(var i=0;i<pro_no_names.length;i++){
+		if(pro_no_names[i].indexOf(pNo)>-1){
+			productName= (pro_no_names[i].split(":"))[1];
+			break;
+		}
+	}
+}
+
+function getCardType(pNo){
+	var pro_no_names = pro_no_name.split(",");
+	for(var i=0;i<pro_no_names.length;i++){
+		if(pro_no_names[i].indexOf(pNo)>-1){
+			cardType= (pro_no_names[i].split(":"))[2];
+			break;
+		}
+	}
+}
+
+//判断送礼助手复选框是否选中
+function showIsGiftHelper(){
+	$.getJSON('/json/giftHelper_showIsGiftOrder.shtml?m=' + Math.random(),function(data) {
+		if(data != null && data.isGiftOrder == 1){
+			$("#songli").attr("checked",true);
+		}else{
+			$("#songli").attr("checked",false);
+		}
+	});
+}
+
+//默认送礼助手为不选中
+function defIsGiftHelper(){
+	$.getJSON('/json/giftHelper_setIsGiftOrder.shtml?m=' + new Date(),{"isGiftOrder":0},function(data) {});
+}
+
+function showGiftHelper(isChecked){//显示送礼助手
+	if(isChecked){
+		isGiftOrder = 1;
+		$.getJSON('/json/giftHelper_setIsGiftOrder.shtml?m=' + Math.random(),{"isGiftOrder":isGiftOrder},function(data) {});
+		$.getJSON('/json/giftHelper_showGiftHelper.shtml?m=' + Math.random(),function(data) {
+			var msg = data.msg;
+			if(msg==1){//用户没使用过送礼助手
+				popupLayer("J_1_show","J_1");
+			}else if(msg==0){//用户已使用过送礼助手
+				var giftHelper = data.giftHelper;
+				setGreetingCardInfo(giftHelper);
+				showDefaultGiftHelper();
+				popupLayer("J_4_show","J_4");
+			}
+		});
+	}else{
+		isGiftOrder = 0;
+		$.getJSON('/json/giftHelper_setIsGiftOrder.shtml?m=' + Math.random(),{"isGiftOrder":isGiftOrder},function(data) {
+				$.getJSON('/json/giftHelper_showGiftHelper.shtml?m=' + Math.random(),function(data) {
+					var giftHelper = data.giftHelper;
+					if(giftHelper != null){
+						if(giftHelper.productNo != null && giftHelper.productNo != ""){
+							$.getJSON('/json/shoppingcart_deleteCartByNoDoAjax.shtml?product_no='+giftHelper.productNo+'&m=' + Math.random(), function(data) {
+									window.location.href="/cart_showShoppingCart.shtml";
+							});
+						}
+					}
+				});
+		});
+	}
+}
+
+function showPrice(isShow){//是否显示打印价格
+	isShowPrice = isShow;
+	closeLayer('popup_close','J_1','false');
+	popupLayer("J_2_show","J_2");
+}
+
+function editShowPrice(){//修改是否显示打印价格
+	$("#modifYunDan").html("");
+	$("input[name='editYunDan'][value="+isShowPrice+"]").attr("checked",true);
+	$("#yundan1").addClass("none");
+	$("#yundan2").removeClass("none");
+}
+
+function saveEditShowPrice(){//保存修改是否显示打印价格
+	isShowPrice = $('input[name="editYunDan"]:checked').val();
+	if(isShowPrice==1){
+		$("#yundan1").html("收货人可以看到发货单中的商品价格");
+	}else{
+		$("#yundan1").html("不希望收货人看到发货单中的商品价格");
+	}
+	$("#modifYunDan").html("[修改]");
+	$("#yundan2").addClass("none");
+	$("#yundan1").removeClass("none");
+}
+
+function showGreetingCards(){//显示所有贺卡
+	closeLayer('popup_close','J_4','false');
+	popupLayer("J_2_show","J_2");
+}
+
+function selectGreetingCard(pNo){//选择贺卡
+	lastProductNo = productNo;
+	productNo = pNo;
+	getProName(productNo);
+	getCardType(productNo);
+	closeLayer("popup_close","J_2",'false');
+	popupLayer("J_3_show","J_3");
+	setGreetingCardInfo();
+}
+
+function tolast(){//上一步
+	closeLayer("popup_close","J_2",'false');
+	popupLayer("J_1_show","J_1");
+}
+
+function tonext(){//下一步
+	productNo="";
+	showDefaultGiftHelper();
+	closeLayer("popup_close","J_2",'false');
+	popupLayer("J_4_show","J_4");
+}
+
+function editShowGreetingCardInfo(){//贺卡信息
+	closeLayer("popup_close","J_4",'false');
+	popupLayer("J_3_show","J_3");
+}
+
+function setGreetingCardInfo(giftHelper){//自动填充贺卡信息（如果用户已使用过送礼助手）
+	if(giftHelper != null){
+		isShowPrice = giftHelper.showPrice;
+		toUser=giftHelper.toUser;
+		showFromUser=giftHelper.showFromUser;
+		fromUser=giftHelper.fromUser;
+		productNo=giftHelper.productNo;
+		wishing=giftHelper.wishing;
+		fontType=giftHelper.fontType;
+		printTime=giftHelper.printTime;
+	}
+	if(printTime != null && printTime !="" && printTime.indexOf("年")>-1){
+		printTime = printTime.replaceAll("年","-");
+		printTime = printTime.replaceAll("月","-");
+		printTime = printTime.replaceAll("日","");
+	}
+	$("input[name='showFromUser'][value="+showFromUser+"]").attr("checked",true);
+	$("#fromUser").val(fromUser);
+	$("#toUser").val(toUser);
+	$("#wishing").val(wishing);
+	$("#fontType").val(fontType);
+	$("#printTime").val(printTime);
+	if(cardType=="01"){
+		$("#printSl").html('<span class="new_year"></span>');
+	}else if(cardType=="02"){
+		$("#printSl").html('<span class="love"></span>');
+	}else if(cardType=="03"){
+		$("#printSl").html('<span class="zhufu"></span>');
+	}else if(cardType=="04"){
+		$("#printSl").html('<span class="shengri"></span>');
+	}
+}
+
+function saveGreetingCardInfo(){//保存贺卡信息
+	if(productNo != ""){
+		showFromUser = $('input[name="showFromUser"]:checked').val();
+		fromUser = $("#fromUser").val();
+		toUser = $("#toUser").val();
+		wishing = $("#wishing").val();
+		fontType = $("#fontType").val();
+		printTime = $("#printTime").val();
+		if(!isLiubai){
+			if(toUser == ""){
+				alert("请填写对方的称呼");
+				return;
+			}
+			if(wishing.length==""){
+				alert("请输入祝福语");
+				return;
+			}
+			if(fromUser == ""){
+				alert("请填写署名");
+				return;
+			}
+			if(printTime == ""){
+				alert("请填写贺卡打印时间");
+				return;
+			}
+		}
+
+		if(toUser.length>30){
+			alert("称呼最多输入不超过30字");
+			return;
+		}
+		if(wishing.length>100){
+			alert("祝福语最多输入不超过100字");
+			return;
+		}
+		if(showFromUser == 1){
+
+			if(fromUser.length>10){
+				alert("署名最多输入不超过10字");
+				return;
+			}
+		}else{
+			fromUser = "";
+		}
+		if(printTime != ""){
+			var printTimes = printTime.split("-");
+			printTime =printTimes[0]+"年"+printTimes[1]+"月"+printTimes[2]+"日";
+		}
+		closeLayer("popup_close","J_3",'false');
+		popupLayer("J_4_show","J_4");
+		showDefaultGiftHelper();
+	}else{
+		alert("请先选择贺卡");
+		closeLayer('popup_close','J_3','false');
+		popupLayer("J_2_show","J_2");
+	}
+	
+}
+
+function showDefaultGiftHelper(){//默认贺卡信息
+	if(isShowPrice==1){
+		$("#yundan1").html("收货人可以看到发货单中的商品价格");
+	}else{
+		$("#yundan1").html("不希望收货人看到发货单中的商品价格");
+	}
+	if(productNo==""){
+		productName="";
+		$("#defHk").html("");
+		$("#defHkInfo").html('<p><span>&nbsp;&nbsp;&nbsp;&nbsp;致：</span></p><p class="clearfix"><span class="fll">祝福语：</span><font class="fll zfy_txt"></font></p><ul><li><span>署&nbsp;&nbsp;名：</span></li><li><span>时&nbsp;&nbsp;&nbsp;间：</span></li><li><span>字&nbsp;&nbsp;&nbsp;体：</span></li></ul>');
+	}else{
+		getProName(productNo);
+		getCardType(productNo);
+		if(printTime.indexOf("-")>-1){
+			var printTimes = printTime.split("-");
+			printTime =printTimes[0]+"年"+printTimes[1]+"月"+printTimes[2]+"日";
+		}
+		$("#defHk").html(productName);
+		$("#defHkInfo").html('<p><span>&nbsp;&nbsp;&nbsp;&nbsp;致：</span>'+toUser+'</p><p class="clearfix"><span class="fll">祝福语：</span><font class="fll zfy_txt">'+wishing+'</font></p><ul><li><span>署&nbsp;&nbsp;名：</span>'+fromUser+'</li><li><span>时&nbsp;&nbsp;&nbsp;间：</span>'+printTime+'</li><li><span>字&nbsp;&nbsp;&nbsp;体：</span>'+fontType+'</li></ul>');
+	}
+	
+}
+
+function liubai(flag){
+	if(flag){
+		isLiubai = true;
+		$("input[name='showFromUser'][value=0]").attr("checked",true);
+		$("#fromUser").val("");
+		$("#toUser").val("");
+		$("#wishing").val("");
+		$("#fontType").val("");
+		$("#printTime").val("");
+	}else{
+		isLiubai = false;
+		setGreetingCardInfo();
+	}
+}
+
+function saveGiftHelper(){
+	var yundan2 = $("#yundan2").css("display");
+	if(yundan2 != 'none'){
+		alert("请保存发货单");
+		return;
+	}
+	$.getJSON('/json/giftHelper_saveGiftHelper.shtml?m=' + Math.random(),{"showPrice":isShowPrice,"toUser":encodeURI(toUser),"showFromUser":showFromUser,"fromUser":encodeURI(fromUser),"productNo":productNo,"wishing":encodeURI(wishing),"fontType":encodeURI(fontType),"printTime":encodeURI(printTime)},function(data) {
+		var msg = data.msg;
+		if(msg==0){//保存送礼助手成功
+			if(productNo!=lastProductNo){
+				addGreetingCard(productNo+":1");
+			}else{
+				closeLayer("popup_close","J_4",'false');
+				popupLayer("J_5_show","J_5");
+			}
+		}else if(msg==-1){//保存送礼助手失败
+			alert("系统繁忙，请稍后再试");
+		}
+	});
+}
+
+
+
+
+function dropDownList(first,second){
+	if(first>-1){
+		$(".J_first").removeClass("active").siblings().hide().end().eq(first).addClass("active").siblings().show();
+		var second_menu=$(".J_first").eq(first).siblings().children("a");
+		var len=second_menu.length;
+		if(len){
+			second_menu.eq(second).addClass("second_active").siblings().removeClass("second_active");
+		}
+	}
+	
+	$(".J_first").each(function(index, element) {
+        $(this).data("flag",true);
+		$(".J_first").eq(first).data("flag",false);
+		$(this).click(function(){
+			if($(this).data("flag")){
+				$(".J_first").removeClass("active");
+				$(this).addClass("active");
+				if($(this).siblings(".J_second").length){
+					$(".J_second").hide();
+					$(this).siblings(".J_second").show();
+				}
+				$(".J_first").each(function(index, element) {
+                   $(this).data("flag",true); 
+                });
+				$(this).data("flag",false);
+			}else{
+				$(this).siblings(".J_second").hide();
+				$(this).data("flag",true);
+			}
+
+
+
+
+			//if(!$(this).hasClass("acitve"))
+//			{
+//				$(".J_second").hide();
+//				
+//				$(".J_first").removeClass("active").eq(index).addClass("active").siblings().show();;
+//			}
+		});
+    });
+}
+//menu left end
+
+//popup layer
+function isIE(num){
+    var num = num || "",
+    tester = document.createElement('div');
+    tester.innerHTML = '<!--[if IE ' + num + ']><i></i><![endif]-->';
+    return !!tester.getElementsByTagName('i')[0];
+}
+//function popupLayer(objClass,targetClass){
+//	$("."+objClass).click(function(){
+//		if(!$("#spm").hasClass("overlay")){
+//	 		$("<div></div>",{"class":"overlay","id":"spm"}).insertBefore("."+targetClass);
+//		}
+//		var bodyH=$(document).height();
+//		$("#spm").css({opacity:0.3,height:bodyH+"px"}).show();
+//		var target=$("."+targetClass);
+//		var targetWidth=target.outerWidth();
+//		var targetHeight=target.outerHeight();
+//		if(isIE(6)){
+//			$("select").hide();
+//			var top=$(document).scrollTop()+$(window).height()/2;
+//			target.css({"top":top+"px"});
+//			$(window).scroll(function(){
+//				var top=$(document).scrollTop()+$(window).height()/2;
+//				target.css({"top":top+"px"});
+//			});
+//		}
+//		target.css({"margin-top":-parseInt(targetHeight/2)+"px","margin-left":-parseInt(targetWidth/2)+"px"});
+//		target.show();
+//		return false;
+//	});
+//}
+
+function popupLayer(objClass,targetClass){
+	if(!$("#spm").hasClass("overlay")){
+ 		$("<div></div>",{"class":"overlay","id":"spm"}).insertBefore("."+targetClass);
+	}
+	var bodyH=$(document).height();
+	$("#spm").css({opacity:0.3,height:bodyH+"px"}).show();
+	var target=$("."+targetClass);
+	var targetWidth=target.outerWidth();
+	var targetHeight=target.outerHeight();
+	if(isIE(6)){
+		//$("select").hide();
+		var top=$(document).scrollTop()+$(window).height()/2;
+		target.css({"top":top+"px"});
+		$(window).scroll(function(){
+			var top=$(document).scrollTop()+$(window).height()/2;
+			target.css({"top":top+"px"});
+		});
+	}
+	target.css({"margin-top":-parseInt(targetHeight/2)+"px","margin-left":-parseInt(targetWidth/2)+"px"});
+	target.show();
+}
+
+//function closeLayer(objClass,targetClass){
+//	$("."+objClass).click(function(){
+//		$(this).parents("."+targetClass).hide();
+//		$("#spm").hide();
+//	});
+//}
+
+function closeLayer(objClass,targetClass,flag){
+	$("."+objClass).parents("."+targetClass).hide();
+	$("#spm").hide();
+	//点击关闭，设置订单为非送礼订单
+	if(flag=='true'){
+		isGiftOrder = 0;
+		productNo="";
+		$("#songli").attr("checked",false);
+		$.getJSON('/json/giftHelper_setIsGiftOrder.shtml?m=' + Math.random(),{"isGiftOrder":isGiftOrder},function(data) {});
+	}
+	
+}
+
+
+
+
