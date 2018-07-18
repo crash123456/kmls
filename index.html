@@ -1,1754 +1,336 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!-- saved from url=(0038)#/zhuanti/hlo.html -->
-<html xmlns="http://www.w3.org/1999/xhtml" data-blockbyte-bs-uid="108003">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>卡木乐斯红酒坊</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content=""/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
 
-    <link rel="stylesheet" type="text/css" href="./css/common_new.css">
-    <link rel="stylesheet" type="text/css" href="./css/head_foot_new.css">
-    <link rel="stylesheet" href="./css/layout.css" type="text/css">
-    <script type="text/javascript" async="" src="./pixel.php"></script>
-    <script charset="utf-8" src="./js/v.js.下载"></script>
-    <script type="text/javascript" async="" src="./js/rt.js.下载"></script>
-    <script type="text/javascript" async="" src="./js/ga.js.下载"></script>
-    <script type="text/javascript" src="./js/jquery-1.6.4.js.下载"></script>
-    <script type="text/javascript" src="./js/shoppingCart.js.下载"></script>
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+    <!-- bootstrap-css -->
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
+    <!--// bootstrap-css -->
+    <!-- css -->
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all"/>
+    <!--// css -->
+
+    <!-- font -->
+    <link href='http://fonts.useso.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet'
+          type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
+          rel='stylesheet' type='text/css'>
+    <!-- //font -->
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/move-top.js"></script>
+    <script type="text/javascript" src="js/easing.js"></script>
     <script type="text/javascript">
-        function buy(product_no, n) {
-            var quantity = "";
-            if (n == null || n == "") {
-                quantity = 1;
-            } else {
-                quantity = n;
-            }
-            addShoppingCart(product_no, quantity);
-        }
-
-        function goCartManager() {
-            var url = window.location.href;
-            $.getJSON('/json/shoppingcart_saveUrlCookie.shtml?m=' + Math.random(), {"urll": url}, function (data) {
-                window.location.href = "/cart_showShoppingCart.shtml";
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
             });
-        }
+        });
     </script>
-    <title>卡丹酒庄的价值理念：家庭，融合现代与传统的两种风格的家庭酒窖。</title>
-    <meta name="keywords" content="法国，红酒，干红，葡萄酒，酒庄品牌，超值">
-    <meta name="description" content="法国，红酒，干红，葡萄酒，酒庄品牌，超值ta-name=" content
-    ">body>div#blockbyte-bs-indicator>div{opacity:0;pointer-events:none}body>iframe#blockbyte-bs-sidebar.blockbyte-bs-visible,body>iframe#blockbyte-bs-overlay.blockbyte-bs-visible{opacity:1;pointer-events:auto}body.blockbyte-bs-noscroll{overflow:hidden
-    !imp">
-    <script charset="UTF-8" src="./js/bundle.js.下载"></script>
-    <style class="blockbyte-bs-style" daortant}body>div#blockbyte-bs-indicator > div {
-        position: absolute;
-        transform: translate3d(-40px, 0, 0);
-        top: 0;
-        left: 0;
-        width: 40px !important;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        border-radius: 0 10px 10px 0;
-        transition: opacity 0.3s, transform 0.3s;
-        z-index: 2
-    }
-
-    body > div#blockbyte-bs-indicator > div > span {
-        -webkit-mask: no-repeat center/32px;
-        -webkit-mask-image: url(chrome-extension://jdbnofccmhefkmjbkkdkfiicjkgofkdh/img/icon-bookmark.svg);
-        background-color: #ffffff;
-        position: absolute;
-        display: block;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%
-    }
-
-    body > div#blockbyte-bs-indicator[data-pos='right'] {
-        left: auto;
-        right: 0
-    }
-
-    body > div#blockbyte-bs-indicator[data-pos='right'] > div {
-        transform: translate3d(40px, 0, 0);
-        left: auto;
-        right: 0;
-        border-radius: 10px 0 0 10px
-    }
-
-    body > div#blockbyte-bs-indicator.blockbyte-bs-fullHeight > div {
-        border-radius: 0
-    }
-
-    body > div#blockbyte-bs-indicator.blockbyte-bs-hover > div {
-        transform: translate3d(0, 0, 0);
-        opacity: 1
-    }
-
-    body > div#blockbyte-bs-indicator[data-pos='left'].blockbyte-bs-has-lsb {
-        height: 100% !important;
-        top: 0 !important
-    }
-
-    body > div#blockbyte-bs-indicator[data-pos='left'].blockbyte-bs-has-lsb > div {
-        background: transparent
-    }
-
-    body > div#blockbyte-bs-indicator[data-pos='left'].blockbyte-bs-has-lsb > div > span {
-        -webkit-mask-position-y: 20px
-    }
-
-    body > iframe#blockbyte-bs-sidebar {
-        width: 350px;
-        max-width: none;
-        height: 0;
-        z-index: 2147483646;
-        background-color: rgba(255, 255, 255, 0.8) !important;
-        border: none;
-        display: block !important;
-        transform: translate3d(-350px, 0, 0);
-        transition: width 0s 0.3s, height 0s 0.3s, opacity 0.3s, transform 0.3s
-    }
-
-    body > iframe#blockbyte-bs-sidebar[data-pos='right'] {
-        left: auto;
-        right: 0;
-        transform: translate3d(350px, 0, 0)
-    }
-
-    body > iframe#blockbyte-bs-sidebar.blockbyte-bs-visible {
-        width: calc(100% + 350px);
-        height: 100%;
-        transform: translate3d(0, 0, 0);
-        transition: opacity 0.3s, transform 0.3s
-    }
-
-    body > iframe#blockbyte-bs-sidebar.blockbyte-bs-hideMask {
-        background: none !important
-    }
-
-    body > iframe#blockbyte-bs-sidebar.blockbyte-bs-hideMask:not(.blockbyte-bs-hover) {
-        width: calc(350px + 50px)
-    }
-
-    body > iframe#blockbyte-bs-overlay {
-        width: 100%;
-        max-width: none;
-        height: 100%;
-        z-index: 2147483647;
-        border: none;
-        background: rgba(0, 0, 0, 0.5) !important;
-        transition: opacity 0.3s
-    }
+    <!--animate-->
+    <link href="css/animate.css" rel="stylesheet" type="text/css" media="all">
+    <script src="js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <!--//end-animate-->
+    <link href="css/component.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
+            });
+        });
+    </script>
+    <style>
+        .pg_p ul li{
+            list-style: none;
+            float: left;
+            margin-left: 20px;
+        }
     </style>
-    <script charset="UTF-8" src="./js/iframeWidget.js.下载"></script>
 </head>
+<body class="cbp-spmenu-push">
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-30027142-1', 'w3layouts.com');
+    ga('send', 'pageview');
+</script>
+<div class="header-section">
+    <!-- banner -->
+    <div class="banner">
+        <div class="container">
+            <div class="header">
 
-<body class="root1200">
-<iframe id="sina_anywhere_iframe" style="display: none;" src="./saved_resource.html"></iframe>
-<script type="text/javascript">if (screen.width >= 1200) {
-    document.getElementsByTagName('body')[0].className = 'root1200';
-}</script>
-<script type="text/javascript" src="./js/jquery-1.6.4.js.下载"></script>
-<!-- 头部 -->
-<div id="head">
-    <!-- top -->
-    <div class="hd_top">
-        <div class="site_nav clearfix">
-            <p class="welcome fll" id="hello">您好，欢迎来到卡木乐斯！<s>|</s><a
-                    href="#/user/user_showlogin.shtml">[登录]</a><a
-                    href="#/user/user_showReg.shtml">[免费注册]</a></p>
+                    <div class="main buttonset">
+                        <!-- Class "cbp-spmenu-open" gets applied to menu and "cbp-spmenu-push-toleft" or "cbp-spmenu-push-toright" to the body -->
 
-            <p></p>
-
-            <ul class="toplist flr">
-                <!-- <li><a href="#" target="_blank">收藏卡木乐斯</a></li> -->
-                <li><a href="http://www.wineniceclub.com/" target="_blank">卡木乐斯荟</a></li>
-                <li class="hover">
-                    <a class="a" href="#/zhuanti/hlo.html#" target="_blank">关注卡木乐斯</a>
-                    <p class="bor"></p>
-                    <div class="tips_wb_wx">
-                        <dl>
-                            <dt>关注微博</dt>
-                            <dd class="pl10">
-                                <wb:follow-button uid="1870483283" type="gray_2" width="136" height="24">
-                                    <iframe src="/followbutton.html" width="136" height="24" frameborder="0"
-                                            scrolling="no" marginheight="0"></iframe>
-                                </wb:follow-button>
-                            </dd>
-                        </dl>
-                        <dl>
-                            <dt>微信关注</dt>
-                            <dd><img src="./images/weixin_pic.jpg" alt=""”></dd>
-                        </dl>
+                        <!--<span class="menu"></span>-->
                     </div>
-                </li>
-                <li><a href="#/html/download_app.html" target="_blank">手机卡木乐斯</a></li>
-                <!--
-                                <li class="hover">
-                                    <a href="#" target="_blank">卡木乐斯服务</a>
-                                    <p class="bor"></p>
-                                    <div class="tips_wb_wx serve">
-                                        <a href="#" target="_blank">礼品卡</a>
-                                        <a href="#" target="_blank">卡木乐斯i生活</a>
-                                    </div>
-                                </li>
-                -->
-                <li><a href="#/account/account_notFaze.shtml" target="_blank">设置勿扰</a></li>
+                    <!-- Classie - class helper functions by @desandro https://github.com/desandro/classie -->
+                    <script src="js/classie.js"></script>
+                    <script>
+                        var menuRight = document.getElementById('cbp-spmenu-s2'),
+                            showRightPush = document.getElementById('showRightPush'),
+                            body = document.body;
 
-                <li class="bor">全国订购热线: 400-600-8009</li>
-            </ul>
-        </div>
-    </div>
-    <!-- top END -->
+                        showRightPush.onclick = function () {
+                            classie.toggle(this, 'active');
+                            classie.toggle(body, 'cbp-spmenu-push-toleft');
+                            classie.toggle(menuRight, 'cbp-spmenu-open');
+                            disableOther('showRightPush');
+                        };
 
-    <div class="hd_cont clearfix">
-        <!-- logo -->
-        <h1 class="hd_logo"><a class="hd_logo" href="#/"></a></h1>
-        <!-- logo END -->
-
-        <!-- 搜索 -->
-        <div class="hd_search">
-            <div class="search_input clearfix">
-                <input class="text" type="text" id="search" onkeydown="if (event.keyCode==13){search();}"
-                       onblur="setDefault()" onfocus="clearDefault()" value="输入你想要查找的商品">
-                <input class="btn" type="submit" value="搜索" title="点击搜索" onclick="search()">
+                        function disableOther(button) {
+                            if (button !== 'showRightPush') {
+                                classie.toggle(showRightPush, 'disabled');
+                            }
+                        }
+                    </script>
+                </div>
+                <div class="logo wow fadeInDown animated" data-wow-delay=".5s">
+                    <h1><a href="index.html">首页</a></h1>
+                </div>
+                <div class="clearfix"></div>
             </div>
-            <p><strong>热门搜索：</strong><a href="#" target="_blank">薄若莱</a><a
-                    href="#" target="_blank">奔富</a> <a
-                    href="#" target="_blank">乐庞</a>
-                <a href="#" target="_blank">整箱</a><a
-                        href="#" target="_blank">更多</a></p>
-        </div>
-        <!-- 搜索 END -->
-
-        <!-- 我的卡木乐斯 -->
-        <div class="hd_show_hide hd_my_jm pr clearfix">
-            <dl>
-                <dt class="my_btn">
-                    <a href="#">我的卡木乐斯</a>
-                </dt>
-                <dd>
-                    <p class="bg"></p>
-                    <div class="my_t clearfix" id="hello_jiumei">
-                        <span class="fll">您好，请登录</span>
-                        <a class="flr btn" href="#">登录卡木乐斯</a>
+            <!-- banner-info -->
+            <div class="banner-info">
+                <div class="col-md-5 banner-info-left wow fadeInLeft animated" data-wow-delay=".5s">
+                    <img src="images/1.png" alt=""/>
+                </div>
+                <div class="col-md-7 banner-info-right">
+                    <div class="banner-info-right-top wow fadeInRight animated" data-wow-delay=".5s">
+                        <h4>Wine</h4>
                     </div>
-                    <div class="my_list clearfix">
-                        <ul>
-                            <li><a href="#" target="_blank"
-                                   rel="nofollow">我的订单 &gt;</a></li>
-                            <li><a href="#" rel="nofollow">账户余额 &gt;</a>
+                    <script src="js/responsiveslides.min.js"></script>
+                    <script>
+                        // You can also use "$(window).load(function() {"
+                        $(function () {
+                            // Slideshow 4
+                            $("#slider3").responsiveSlides({
+                                auto: true,
+                                pager: false,
+                                nav: true,
+                                speed: 500,
+                                namespace: "callbacks",
+                                before: function () {
+                                    $('.events').append("<li>before event fired.</li>");
+                                },
+                                after: function () {
+                                    $('.events').append("<li>after event fired.</li>");
+                                }
+                            });
+                        });
+                    </script>
+                    <div id="top" class="callbacks_container-wrap">
+                        <ul class="rslides" id="slider3">
+                            <li>
+                                <div class="banner-info-right-info wow fadeInRight animated" data-wow-delay=".5s">
+                                    <h3> Camolas Origin
+                                        <span>卡木乐斯 起源</span></h3>
+                                    <p> &nbsp&nbsp&nbsp&nbsp&nbsp“Adega Camolas ”是家族企业, 他们生产和瓶装葡萄酒已超过二十余年。
+                                        作为帕尔美拉地区最有魅力的家庭之一，其创始人决定将其姓氏用作现在公认的品牌“CAMOLAS-卡木乐斯”
+                                    </p>
+                                </div>
                             </li>
-                            <li><a href="#" target="_blank"
-                                   rel="nofollow">我的收藏 &gt;</a></li>
-                            <li><a href="#" target="_blank" rel="nofollow">礼品卡
-                                &gt;</a></li>
-                            <li><a href="#" target="_blank" rel="nofollow">我的积分
-                                &gt;</a></li>
-                            <li><a href="#" target="_blank" rel="nofollow">礼券/提货卡
-                                &gt;</a></li>
+                            <li>
+                                <div class="banner-info-right-info wow fadeInRight animated" data-wow-delay=".5s">
+                                    <h3>关于产区
+                                        <span>阿拉比达</span></h3>
+                                    <p>&nbsp&nbsp&nbsp&nbsp产自受保护的阿拉比达地区的自然生态园, 葡萄酒酿造来自优质地块的精选葡萄，从而这块区域酿造出葡萄酒独特的口味。
+                                        这个地区的酿酒葡萄种子可以追溯到公元前8年
+                                        1000年至2000年之间，塔尔萨人和腓尼基人在这个地区生产葡萄酒。该地区本身即阿拉比达山脉是被公认为人类自然和文化遗产。
+
+                                    </p>
+                                </div>
+                            </li>
+
                         </ul>
                     </div>
-                    <div class="viewlist clearfix">
-                        <h4>最近浏览的商品：</h4>
-                        <ul class="clearfix" id="topzjll"></ul>
+                    <div class="icons wow fadeInUp animated" data-wow-delay=".5s">
+                        <ul>
+                            <li><a href="https://twitter.com/" class="twitter"></a></li>
+                            <li><a href="https://facebook.com/" class="twitter facebook"></a></li>
+                            <li><a href="https:// chrome.com/" class="twitter chrome"></a></li>
+                            <li><a href="https://dribbble.com/" class="twitter dribbble"></a></li>
+                        </ul>
                     </div>
-                </dd>
-            </dl>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <!-- //banner-info -->
         </div>
-        <!-- 我的卡木乐斯 END -->
+    </div>
+    <!-- //banner -->
 
-        <!-- 去购物车结算 -->
-        <div class="hd_show_hide hd_shopcart pr">
-            <dl>
-                <dt>
-                    <div class="cart_btn">
-                        <a href="javascript:void(0)" onclick="goCartManager();">去购物车结算</a>
-                        <div class="bg" id="topcartCount">0</div>
+    <!-- banner-bottom -->
+    <div class="banner-bottom">
+        <div class="col-md-8 banner-bottom-left">
+            <div class="col-md-7 welcome-left">
+                <h4 class="wow fadeInLeft animated" data-wow-delay=".5s"><a
+                        href="https://shop524667082.taobao.com/?spm=a230r.7195193.1997079397.23.Dc76JQ"
+                        style="text-decoration: none ; font-size: 28px;">Welcome To Our
+                    Winery</a></h4>
+                    <p><img src="./images/map.jpg" alt=""></p>
+                <h5 class="wow fadeInRight animated" data-wow-delay=".5s"></h5>
+                <p class="wow fadeInLeft animated" data-wow-delay=".5s"></p>
+            </div>
+            <div class="col-md-5 welcome-right wow zoomIn animated" data-wow-delay=".5s">
+                <img src="./images/3.jpg" alt="">
+            </div>
+            <div class="clearfix"></div>
+            <div class="welcome-left-bottom">
+                <h4 class="wow fadeInUp animated" data-wow-delay=".5s">工艺</h4>
+                <p class="wow fadeInUp animated" data-wow-delay=".5s">&nbsp&nbsp&nbsp&nbsp在不锈钢大桶，美国橡木桶中分别酿制，温度控制在24ºC -
+                    26ºC，每天重新组装，在葡萄酿造过程中减少其强度， 以提取其果香的香气，从而保证了葡萄酒的预期颜色。</p>
+            </div>
+            <div class="welcome-bottom-below" style="float: left;">
+                <h4 class="wow fadeInLeft animated" data-wow-delay=".5s">Camolas</h4>
+                <h5 class="wow fadeInRight animated" data-wow-delay=".5s">
+                    居家、餐厅理想之选<br>
+                    5升，10升盒装可选<br>
+                    经济简约包装，运输便捷<br>
+                    这些餐酒醇香可口，品质上乘。
+                </h5>
+            </div>
+            <div class="pg_p">
+                <ul>
+                    <li style="margin-top: 60px;"><img src="./images/pg_2.png" alt=""></li>
+                    <li><img src="./images/pg_1.png" alt=""></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-4 banner-bottom-right">
+            <div class="banner-bottom-right-top">
+                <div class="banner-bottom-right-top-info">
+                    <h4 class="wow fadeInUp animated" data-wow-delay=".5s">关于我们</h4>
+                    <p class="wow fadeInUp animated" data-wow-delay=".5s" style="letter-spacing:2px ">
+                        &nbsp&nbsp&nbsp&nbsp哈木集团成立于2007年1月，是以消费品 灯 汽车配件 文具日用百货的自营进出口业务为核心业务，积极打造外贸综合服务平台。目前公司下辖包括HAMU、Q&Y 、JIALIN、FTZ
+                        H&M、W&R、Y&C、G-LITE共7家全资和控股贸易子公司。
+
+                        宁波哈木真进出口践行“质量第一，信誉第一”的服务宗旨，以日用品文具消费品 汽车配件
+                        灯出口为主营业务。经过前后近17年的发展，我们与全球约70个国家和地区的近几百位客户保持着长期良好的贸易合作关系。通关、退税、信保、外汇、物流、贸易融资、全球展会、专业产品展示中心等一般贸易服务与其他增值服务的一站式外贸综合服务。
+
+                        集团积极整合进出口行业上下游资源，全力打造外贸综合服务供应链平台。从单一出口业务转型为进出口和国内贸易、从单一贸易转型为多元化、从单纯买卖转型为买卖加增值服务、从一般业务转型为平台建设、发展电子商务，线上线下相结合的方向发展。
+
+                        一直以来，我们坚持“客户第一，团队健康，务实，创新”的价值观，以“致力于提供优质消费品并将其涵盖到生活工作的各个领域，推广服务至世界的每个角落”为公司使命，不久将来能够成为全球消费品顶级服务商。相信全体哈木人会在今后的发展道路上，与各界朋友一道，继往开来，共创互赢！
+                    </p>
+                </div>
+
+            </div>
+            <div class="banner-bottobanner-bottom-right-bottom wow zoomIn animated animatedoomIn animated"
+                 data-wow-delay=".5s">
+                <img src="./images/2.png" alt="">
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- //banner-bottom -->
+
+    <!-- news -->
+
+    <!-- //news -->
+
+    <!-- footer -->
+    <div class="footer">
+        <div class="container">
+            <div class="footer-grids">
+                <div class="col-md-4 footer-left wow fadeInLeft animated" data-wow-delay=".5s">
+                    <div class="footer-left-heading">
+                        <a href="index.html">Wine</a>
                     </div>
-                </dt>
-                <dd class="clearfix" id="topCart"><p class="bg"></p>
-                    <div class="shopcart_t">共<strong id="topcartSpanNum">0</strong>件商品</div>
-                    <ul class="shop_list clearfix"><span class="flr">金额共计：<strong
-                            class="colorb00 font16">￥0</strong></span>
-                        <p></p></ul>
-                </dd>
-            </dl>
-        </div>
-        <!-- 去购物车结算 END -->
-    </div>
-
-    <!-- hd banner -->
-    <div class="hd_banner pr" id="hd_banner" style="display:none">
-        <div class="banner_bg">
-
-        </div>
-        <div class="close"></div>
-    </div>
-    <!-- hd banner -->
-
-    <!-- Nav -->
-    <div class="hd_nav">
-        <div class="w_nav">
-            <!-- 选酒中心 -->
-            <div class="wine_list pr">
-                <h2><a href="#" target="_blank">选酒中心</a><s></s></h2>
-                <div class="list_text">
-                    <dl class="clearfix">
-                        <dt class="bg">
-                            <h3>入门选酒&gt; <a href="#">如何选酒？</a></h3>
-                            <div class="list">
-                                <h4>
-                                    <span>人群：</span>
-                                    <a href="#"
-                                       target="_blank">男士</a>
-                                    <a href="#l"
-                                       target="_blank">女士</a>
-                                    <a href="#"
-                                       target="_blank">长辈</a>
-                                </h4>
-                                <h4>
-                                    <span>用餐：</span>
-                                    <a href="#"
-                                       target="_blank">湘菜</a>
-                                    <a href="#"
-                                       target="_blank">川菜</a>
-                                    <a href="#"
-                                       target="_blank">粤菜</a>
-                                    <a href="#"
-                                       target="_blank">西餐</a>
-                                </h4>
-                                <h4>
-                                    <span>口感：</span>
-                                    <a href="#"
-                                       target="_blank">柔顺</a>
-                                    <a href="#"
-                                       target="_blank">醇厚</a>
-                                    <a href="#"
-                                       target="_blank">香甜</a>
-                                    <a href="#"
-                                       target="_blank">果香</a>
-                                </h4>
-                                <h4>
-                                    <span>功效：</span>
-                                    <a href="#"
-                                       target="_blank">健康</a>
-                                    <a href="#"
-                                       target="_blank">美容</a>
-                                </h4>
-                                <h4>
-                                    <span>热门标签：</span>
-                                    <a href="#"
-                                       target="_blank">约会</a>
-                                    <a href="#"
-                                       target="_blank">礼品</a>
-                                    <a href="#"
-                                       target="_blank">女士最爱</a>
-                                    <a href="#"
-                                       target="_blank">甜酒精选</a>
-                                </h4>
-                                <h4></h4>
-                            </div>
-                        </dt>
-                        <dd class="">
-                            <ul class="more_list_tag">
-
-                                <li>
-                                    <p>人群</p>
-                                    <div class="tag_item">
-                                        <h4>
-                                            <a href="#"
-                                               target="_blank">男士</a>
-                                            <a href="#"
-                                               target="_blank">女士</a>
-                                            <a href="#"
-                                               target="_blank">长辈</a>
-
-                                        </h4>
-                                    </div>
-                                </li>
-                                <li>
-                                    <p>用餐</p>
-                                    <div class="tag_item">
-                                        <h4>
-                                            <a href="#"
-                                               target="_blank">川菜</a>
-                                            <a href="#"
-                                               target="_blank">湘菜</a>
-                                            <a href="#"
-                                               target="_blank">粤菜</a>
-                                            <a href="#"
-                                               target="_blank">鲁菜</a>
-                                            <a href="#"
-                                               target="_blank">淮扬菜</a>
-                                            <a href="#"
-                                               target="_blank">西餐</a>
-                                        </h4>
-                                    </div>
-                                </li>
-                                <li>
-                                    <p>口感</p>
-                                    <div class="tag_item">
-                                        <h4>
-                                            <a href="#"
-                                               target="_blank">柔顺</a>
-                                            <a href="#"
-                                               target="_blank">醇厚</a>
-                                            <a href="#"
-                                               target="_blank">香甜</a>
-                                            <a href="#"
-                                               target="_blank">果香</a>
-                                        </h4>
-                                    </div>
-                                </li>
-                                <li>
-                                    <p>功效</p>
-                                    <div class="tag_item">
-                                        <h4>
-                                            <a href="#"
-                                               target="_blank">健康</a>
-                                            <a href="#"
-                                               target="_blank">美容</a>
-                                        </h4>
-                                    </div>
-                                </li>
-                                <li>
-                                    <p>热门标签</p>
-                                    <div class="tag_item">
-                                        <h4>
-                                            <a href="#"
-                                               target="_blank">约会</a>
-                                            <a href="#"
-                                               target="_blank">礼品</a>
-                                            <a href="#"
-                                               target="_blank">女士最爱</a>
-                                            <a href="#"
-                                               target="_blank">甜酒精选</a>
-                                        </h4>
-                                    </div>
-                                </li>
-                                <li>
-                                    <p>&nbsp;</p>
-                                    <div class="tag_item">
-                                        <h4>&nbsp;</h4>
-                                    </div>
-                                </li>
-                            </ul>
-                        </dd>
-                    </dl>
-                    <dl class="clearfix">
-                        <dt>
-                            <h3><a href="#" target="_blank">送礼&gt;</a></h3>
-                            <div class="list">
-                                <h4>
-                                    <a href="#"
-                                       target="_blank">生日</a>
-                                    <a href="#"
-                                       target="_blank">聚会</a>
-                                    <a href="#"
-                                       target="_blank">商务</a>
-                                    <a href="#"
-                                       target="_blank">婚庆</a>
-                                </h4>
-                                <h4>
-                                    <a href="#"
-                                       target="_blank">送女士</a>
-                                    <a href="#"
-                                       target="_blank">送男士</a>
-                                    <a href="#"
-                                       target="_blank">送长辈</a>
-                                </h4>
-                                <h4>
-                                    <a href="#" target="_blank">礼品卡</a>
-                                 </h4>
-                            </div>
-                        </dt>
-                        <dd>
-                            <ul class="more_list_tag">
-
-                                <li>
-                                    <p>场合</p>
-                                    <div class="tag_item">
-                                        <h4>
-                                            <a href="#"
-                                               target="_blank">生日</a>
-                                            <a href="#"
-                                               target="_blank">聚会</a>
-                                            <a href="#"
-                                               target="_blank">商务</a>
-                                            <a href="#"
-                                               target="_blank">婚庆</a>
-                                            <a href="#"
-                                               target="_blank">礼节拜访</a>
-                                            <a href="#"
-                                               target="_blank">结婚纪念日</a>
-                                        </h4>
-                                    </div>
-                                </li>
-                                <li>
-                                    <p>对象</p>
-                                    <div class="tag_item">
-                                        <h4>
-                                            <a href="#"
-                                               target="_blank">送女士</a>
-                                            <a href="#"
-                                               target="_blank">送男士</a>
-                                            <a href="#"
-                                               target="_blank">送长辈</a>
-
-                                        </h4>
-                                    </div>
-                                </li>
-                                <li>
-                                    <p>其他</p>
-                                    <div class="tag_item">
-                                        <h4>
-                                            <a href="#" target="_blank">礼品卡</a>
-
-                                        </h4>
-                                    </div>
-                                </li>
-                            </ul>
-                        </dd>
-                    </dl>
-                    <dl class="clearfix">
-                        <dt class="bg">
-                            <h3><a href="#" target="_blank">葡萄酒&gt;</a></h3>
-                            <div class="list">
-                                <h4>
-                                    <a href="#" target="_blank">干红</a>
-                                    <a href="#" target="_blank">干白</a>
-                                    <a href="#" target="_blank">起泡酒</a>
-                                </h4>
-                                <h4>
-                                    <a href="#" target="_blank">桃红</a>
-                                    <a href="#" target="_blank">甜白</a>
-                                    <a href="#" target="_blank">果酒</a>
-                                    <a href="#" target="_blank">西餐</a>
-                                </h4>
-                                <h4>
-                                    <a href="#" target="_blank">法国</a>
-                                    <a href="#" target="_blank">西班牙</a>
-                                    <a href="#" target="_blank">意大利</a>
-                                </h4>
-                                <h4>
-                                    <a href="#" target="_blank">智利</a>
-                                    <a href="#" target="_blank">阿根廷</a>
-                                </h4>
-                                <h4>
-                                    <a href="#" target="_blank">高分酒款</a>
-                                </h4>
-                            </div>
-                        </dt>
-                        <dd>
-                            <ul class="more_list_tag">
-                                <li>
-                                    <p><a href="#" target="_blank">价格</a></p>
-                                    <div class="tag_item">
-                                        <h4>
-                                            <a href="#" target="_blank">1-99</a>
-                                            <a href="#"
-                                               target="_blank">100-199</a>
-                                            <a href="#"
-                                               target="_blank">200-299</a>
-                                            <a href="#"
-                                               target="_blank">300-499</a>
-                                            <a href="#"
-                                               target="_blank">500-799</a>
-                                            <a href="#"
-                                               target="_blank">800-999</a>
-                                            <a href="#"
-                                               target="_blank">1000以上</a>
-                                        </h4>
-                                    </div>
-                                </li>
-                                <li>
-                                    <p><a href="#" target="_blank">产地</a></p>
-                                    <div class="tag_item">
-                                        <h4>
-                                            <a href="#" target="_blank">法国</a><a
-                                                href="#"
-                                                target="_blank">意大利</a><a
-                                                href="#"
-                                                target="_blank">西班牙</a><a
-                                                href="#" target="_blank">德国</a>
-                                            <a href="#" target="_blank">澳大利亚</a><a
-                                                href="#" target="_blank">智利</a><a
-                                                href="#" target="_blank">南非</a><a
-                                                href="#" target="_blank">美国</a>
-                                            <a href="#" target="_blank">新西兰</a><a
-                                                href="#"
-                                                target="_blank">葡萄牙</a><a
-                                                href="#"
-                                                target="_blank">阿根廷</a><a
-                                                href="#"
-                                                target="_blank">加拿大</a>
-                                            <a href="#" target="_blank">墨西哥</a><a
-                                                href="#"
-                                                target="_blank">奥地利</a>
-                                        </h4>
-                                    </div>
-                                </li>
-                                <li>
-                                    <p><a href="#" target="_blank">红葡萄酒</a></p>
-                                    <div class="tag_item">
-                                        <h4>
-                                            <a href="#" target="_blank">干红</a><a
-                                                href="#"
-                                                target="_blank">半干红</a><a
-                                                href="#"
-                                                target="_blank">半甜红</a><a
-                                                href="#"
-                                                target="_blank">甜红</a>
-                                        </h4>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <p><a href="#" target="_blank">白葡萄酒</a></p>
-                                    <div class="tag_item">
-                                        <h4>
-                                            <a href="#"
-                                               target="_blank">干白</a><a
-                                                href="#"
-                                                target="_blank">半干白</a><a
-                                                href="#"
-                                                target="_blank">半甜白</a><a
-                                                href="#"
-                                                target="_blank">甜白</a>
-                                        </h4>
-                                    </div>
-                                </li>
-                                <li>
-                                    <p><a href="#" target="_blank">桃红葡萄酒</a></p>
-                                    <div class="tag_item">
-                                        <h4>
-                                            <a href="#"
-                                               target="_blank">干型桃红</a><a
-                                                href="#" target="_blank">半干型桃红</a>
-                                        </h4>
-                                    </div>
-                                </li>
-                                <li>
-                                    <p><a href="#" target="_blank">起泡酒</a></p>
-                                    <div class="tag_item">
-                                        <h4>
-                                            <a href="#" target="_blank">特干型起泡酒</a><a
-                                                href="#" target="_blank">干起泡酒</a><a
-                                                href="#" target="_blank">半干起泡酒</a><a
-                                                href="#" target="_blank">甜起泡酒</a>
-                                            <a href="#"
-                                               target="_blank">干香槟</a><a
-                                                href="#" target="_blank">自然干起泡</a><a
-                                                href="#" target="_blank">桃红香槟</a>
-                                        </h4>
-                                    </div>
-                                </li>
-                                <li>
-                                    <p><a href="#" target="_blank">加强葡萄酒</a></p>
-                                    <div class="tag_item">
-                                        <h4>
-                                            <a href="#"
-                                               target="_blank">雪莉酒</a><a
-                                                href="#"
-                                                target="_blank">波特酒</a>
-                                            <a href="#"
-                                               target="_blank">自然甜酒</a>
-                                        </h4>
-                                    </div>
-                                </li>
-                                <li>
-                                    <p><a href="#" target="_blank">其他</a></p>
-                                    <div class="tag_item">
-                                        <h4>
-                                            <a href="#"
-                                               target="_blank">冰酒</a><a
-                                                href="#" target="_blank">果酒</a><a
-                                                href="#"
-                                                target="_blank">贵腐</a>
-                                        </h4>
-                                    </div>
-                                </li>
-                            </ul>
-                        </dd>
-                    </dl>
-                    <dl class="clearfix">
-                        <dt>
-                            <h3><a href="#" target="_blank">洋酒&gt;</a></h3>
-                            <div class="list">
-                                <h4>
-                                    <a href="#" target="_blank">白兰地</a>
-                                    <a href="#" target="_blank">威士忌</a>
-                                    <a href="#" target="_blank">伏特加</a>
-                                </h4>
-                                <h4>
-                                    <a href="#" target="_blank">朗姆酒</a>
-                                    <a href="#" target="_blank">金酒</a>
-                                    <a href="#" target="_blank">龙舌兰</a>
-                                    <a href="#" target="_blank">力娇酒</a>
-                                </h4>
-                                <h4>
-                                    <a href="#" target="_blank">人头马</a>
-                                    <a href="#" target="_blank">轩尼诗</a>
-                                    <a href="#" target="_blank">马爹利</a>
-                                    <a href="#" target="_blank">芝华士</a>
-                                </h4>
-                                <h4>
-                                    <a href="#" target="_blank">百龄坛</a>
-                                    <a href="#" target="_blank">尊尼获加</a>
-                                </h4>
-                            </div>
-                        </dt>
-                        <dd>
-                            <ul class="more_list_tag">
-                                <li>
-                                    <p><a href="#" target="_blank">价格</a></p>
-                                    <div class="tag_item">
-                                        <h4>
-                                            <a href="#"
-                                               target="_blank">1-99</a>
-                                            <a href="#" target="_blank">100-199</a>
-                                            <a href="#" target="_blank">200-299</a>
-                                            <a href="#" target="_blank">300-499</a>
-                                            <a href="#" target="_blank">500-799</a>
-                                            <a href="#" target="_blank">800-999</a>
-                                            <a href="#" target="_blank">1000以上</a>
-                                        </h4>
-                                    </div>
-                                </li>
-                                <li>
-                                    <p><a href="#" target="_blank">类型</a></p>
-                                    <div class="tag_item">
-                                        <h4>
-                                            <a href="#"
-                                               target="_blank">白兰地</a><a
-                                                href="#"
-                                                target="_blank">威士忌</a><a
-                                                href="#"
-                                                target="_blank">伏特加</a>
-                                            <a href="#"
-                                               target="_blank">朗姆酒</a><a
-                                                href="#"
-                                                target="_blank">金酒</a><a
-                                                href="#"
-                                                target="_blank">龙舌兰</a><a
-                                                href="#"
-                                                target="_blank">力娇酒</a>
-                                            <a href="#"
-                                               target="_blank">开胃酒</a><a
-                                                href="#" target="_blank">鸡尾酒</a>
-                                        </h4>
-                                    </div>
-                                </li>
-                                <li>
-                                    <p><a href="#" target="_blank">产地</a></p>
-                                    <div class="tag_item">
-                                        <h4>
-                                            <a href="#"
-                                               target="_blank">法国</a><a
-                                                href="#"
-                                                target="_blank">美国</a><a
-                                                href="#"
-                                                target="_blank">德国</a><a
-                                                href="#" target="_blank">意大利</a><a
-                                                href="#" target="_blank">墨西哥</a><a
-                                                href="#" target="_blank">俄罗斯</a><a
-                                                href="#"
-                                                target="_blank">古巴</a><a
-                                                href="#"
-                                                target="_blank">瑞典</a><a
-                                                href="#" target="_blank">苏格兰</a><a
-                                                href="#" target="_blank">英格兰</a><a
-                                                href="#" target="_blank">爱尔兰</a><a
-                                                href="#"
-                                                target="_blank">波兰</a><a
-                                                href="#"
-                                                target="_blank">汤加</a><a
-                                                href="#" target="_blank">拉脱维亚</a>
-                                        </h4>
-                                    </div>
-                                </li>
-                                <li>
-                                    <p>&nbsp;</p>
-                                    <div class="tag_item">
-                                        <h4>&nbsp;</h4>
-                                    </div>
-                                </li>
-                            </ul>
-                        </dd>
-                    </dl>
-                    <dl class="clearfix">
-                        <dt class="bg">
-                            <h3><a href="#" target="_blank">酒具&gt;</a></h3>
-                            <div class="list">
-                                <h4>
-                                    <a href="#" target="_blank">酒柜</a>
-                                    <a href="#" target="_blank">酒杯</a>
-                                    <a href="#" target="_blank">开瓶器</a>
-                                    <a href="#" target="_blank">醒酒器</a>
-                                </h4>
-                                <h4>
-                                    <a href="#" target="_blank">礼盒</a>
-                                    <a href="#" target="_blank">礼袋/瓶套</a>
-                                </h4>
-                            </div>
-                        </dt>
-                        <dd>
-                            <ul class="more_list_tag">
-                                <li>
-                                    <p><a href="#" target="_blank">价格</a></p>
-                                    <div class="tag_item">
-                                        <h4>
-                                            <a href="#" target="_blank">1-99</a>
-                                            <a href="#"
-                                               target="_blank">100-199</a>
-                                            <a href="#"
-                                               target="_blank">200-299</a>
-                                            <a href="#"
-                                               target="_blank">300-499</a>
-                                            <a href="#"
-                                               target="_blank">500-799</a>
-                                            <a href="#"
-                                               target="_blank">800-999</a>
-                                            <a href="#"
-                                               target="_blank">1000以上</a>
-                                        </h4>
-                                    </div>
-                                </li>
-                                <li>
-                                    <p><a href="#" target="_blank">类型</a></p>
-                                    <div class="tag_item">
-                                        <h4>
-                                            <a href="#"
-                                               target="_blank">酒柜</a><a href="#"
-                                                                        target="_blank">红酒杯</a><a
-                                                href="#" target="_blank">开瓶器</a><a
-                                                href="#"
-                                                target="_blank">醒酒器</a><a
-                                                href="#" target="_blank">礼盒</a><a
-                                                href="#"
-                                                target="_blank">礼袋/瓶套</a><a
-                                                href="#"
-                                                target="_blank">礼品卡</a><a
-                                                href="#"
-                                                target="_blank">其他</a>
-                                        </h4>
-                                    </div>
-                                </li>
-                                <li>
-                                    <p>&nbsp;</p>
-                                    <div class="tag_item">
-                                        <h4>&nbsp;</h4>
-                                    </div>
-                                </li>
-                            </ul>
-                        </dd>
-                    </dl>
-                    <dl class="clearfix">
-                        <dt>
-                            <h3><a href="#" target="_blank">红酒导购&gt;</a>&nbsp;&nbsp;<a
-                                    href="#" target="_blank">品牌中心</a></h3>
-                        </dt>
-                    </dl>
+                    <div class="footer-left-bottom">
+                        <p>地址
+                            <span>宁波哈木真进出口有限公司</span>
+                        </p>
+                        <p class="phone">Call : +1 123 456 789
+                            <span>Email : <a href="mailto:example@email.com">mail@example.com</a></span>
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <!-- 选酒中心 END -->
-
-            <!-- 主导航 -->
-            <div class="nav">
-                <dl class="">
-                    <dt><a href="#" target="_blank" style="border-left:none;">首页</a></dt>
-                </dl>
-                <dl class="">
-                    <dt><a href="#" target="_blank">卡木乐斯精选</a></dt>
-                    <dd class="down_menu">
-                        <div class="list">
-                            <p><span class="bor"></span>产地精选<a href="#"
-                                                               target="_blank"><span>勃艮第</span></a></p>
-                            <p><span class="bor"></span>品牌酒庄<a href="#"
-                                                               target="_blank"><span>亨利欧</span></a><a
-                                    href="#" target="_blank"><span>好哥们</span></a><a
-                                    href="#"
-                                    target="_blank"><span>拉妩</span></a><strong></strong></p>
-                            <p><a href="#" target="_blank"
-                                  class="exclick">高分精选</a></p>
-                        </div>
-                    </dd>
-
-                </dl>
-                <dl class="">
-                    <dt><a href="#" target="_blank"
-                           style="color:#ffe502;font-weight:bold;">中级庄</a><!-- <s></s> --></dt>
-
-                </dl>
-
-                <dl class="">
-                    <dt><a href="#" target="_blank">限时闪购</a></dt>
-                </dl>
-                <dl class="">
-                    <dt><a href="#" target="_blank">精品特卖</a><!-- <s></s> --></dt>
-                </dl>
-                <dl>
-                </dl>
-                <dl class="">
-                    <dt><a target="_blank" href="#">礼品中心</a></dt>
-                </dl>
-                <dl class="">
-                    <dt><a target="_blank" href="#">卡木乐斯俱乐部</a></dt>
-                </dl>
-                <dl class="">
-                    <dt><a target="_blank" href="#">红酒文化</a></dt>
-                </dl>
-                <dl class="">
-                    <dt><a href="#" target="_blank"
-                           class="exclick">招商加盟</a></dt>
-                    <dd class="down_menu">
-                        <div class="list">
-                            <p><a target="_blank"
-                                  href="#">卡木乐斯体验店</a>
-                            </p>
-                        </div>
-                    </dd>
-                </dl>
-            </div>
-            <!-- 主导航 END-->
-
-            <!-- 边导航 -->
-            <!--            <div class="bar_nav">
-
-                            <dl>
-                                <dt><a href="#" target="_blank">会员俱乐部</a></dt>
-                                <dd>
-                                    <a href="#" target="_blank">会员俱乐部1</a>
-                                    <a href="#" target="_blank">会员俱乐部2</a>
-                                    <a href="#" target="_blank">会员俱乐部3</a>
-                                </dd>
-                            </dl>
-
-                            <dl>
-                                <dt><a href="#" target="_blank">红酒文化</a></dt>
-
-                                <dd>
-                                    <a href="#" target="_blank">卡木乐斯学院1</a>
-                                    <a href="#" target="_blank">卡木乐斯学院2</a>
-                                    <a href="#" target="_blank">卡木乐斯学院3</a>
-                                </dd>
-
-                            </dl>
-
-                            <dl>
-                                <dt><a href="#" target="_blank">社区</a></dt>
-                            </dl>
-
-                            <dl>
-                                <dt><a href="#" target="_blank">招商加盟</a></dt>
-
-                                <dd>
-                                    <a href="#" target="_blank">招商加盟</a>
-                                    <a href="#" target="_blank">经销代理</a>
-                                    <a href="#" target="_blank">城市频道</a>
-                                </dd>
-
-                            </dl>
-                            <dl>
-                                <dt><a href="#" target="_blank">企业服务</a></dt>
-                            </dl>
-                            </ul>
-                        </div>-->
-            <!-- 边导航 END -->
-
-        </div>
-    </div>
-    <!-- Nav END -->
-
-</div>
-<!-- 头部 END-->
-
-
-<script type="text/javascript">
-
-    function _load(fun) {//本函数检测文档是否加载完成，如果完成开始执行fun函数。
-
-        if (window.attachEvent) {
-
-            window.attachEvent('onload', fun);
-
-        } else {
-
-            window.addEventListener('load', fun, false);
-
-        }
-
-    }
-
-
-</script>
-<script type="text/javascript" src="./js/shoppingCart.js.下载"></script>
-<script type="text/javascript" src="./js/head_foot_new.js.下载"></script>
-<script type="text/javascript" src="./js/rotationClick.js.下载"></script>
-<script type="text/javascript" src="./js/tabs.js.下载"></script>
-<script src="./js/wb.js.下载" type="text/javascript" charset="utf-8"></script>
-<div class="jd">
-
-
-    <title>亨利欧</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-        li {
-            list-style: none;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        .clear {
-            clear: both;
-        }
-
-        img {
-            border: none;
-        }
-
-        .clearfix:after {
-            visibility: hidden;
-            display: block;
-            font-size: 0;
-            content: " ";
-            clear: both;
-            height: 0;
-        }
-
-        .box {
-            width: 100%;
-            background: #e7e9da;
-        }
-
-        .banner {
-            width: 100%;
-        }
-
-        .banner .banner1 {
-            background: url(http://www.wineimg.com/userfiles/image/2014/08/hlo/banner1_bg.jpg) no-repeat center;
-            width: 100%;
-            height: 117px;
-        }
-
-        .banner .banner2 {
-            background: url(http://www.wineimg.com/userfiles/image/2014/08/hlo/banner2_bg.jpg) no-repeat center;
-            width: 100%;
-            height: 108px;
-        }
-
-        .banner .banner3 {
-            background: url(http://www.wineimg.com/userfiles/image/2014/08/hlo/banner3_bg.jpg) no-repeat center;
-            width: 100%;
-            height: 126px;
-        }
-
-        .main {
-            width: 982px;
-            margin: 0 auto;
-            padding-bottom: 28px;
-            margin-top: 28px;
-        }
-
-        .main .main_inner1 {
-            width: 982px;
-            background: #fff;
-        }
-
-        .main_inner1 .inner1_top {
-            width: 982px;
-            height: 55px;
-            background: #adbd26;
-        }
-
-        .main_inner1 .inner1_top img {
-            float: left;
-            padding-top: 18px;
-            padding-left: 23px;
-        }
-
-        .main_inner1 .inner1_top span {
-            float: left;
-            display: block;
-            font-size: 16px;
-            color: #fff;
-            font-family: Tahoma, Geneva, sans-serif;
-            font-weight: bold;
-            padding-top: 22px;
-            padding-left: 8px;
-        }
-
-        .main_inner1 .inner1_centre {
-            width: 982px;
-            height: 253px;
-            padding-top: 2px;
-        }
-
-        .main_inner1 .inner1_bottom {
-            width: 982px;
-        }
-
-        .main_inner1 .inner1_bottom p {
-            width: 600px;
-            float: left;
-            color: #666666;
-            font-size: 14px;
-            padding-top: 34px;
-            padding-left: 24px;
-            line-height: 20px;
-        }
-
-        .main_inner1 .inner1_bottom p span {
-            font-size: 18px;
-        }
-
-        .main_inner1 .inner1_bottom p a {
-            color: #ca0000;
-        }
-
-        .main_inner1 .inner1_bottom img {
-            float: right;
-        }
-
-        .main_inner2 {
-            width: 982px;
-            background: #fff;
-            margin-top: 11px;
-            padding-bottom: 20px;
-        }
-
-        .main_inner2 .inner2_top {
-            width: 982px;
-            height: 55px;
-            background: #adbd26;
-        }
-
-        .main_inner2 .inner2_top img {
-            float: left;
-            padding-top: 18px;
-            padding-left: 23px;
-        }
-
-        .main_inner2 .inner2_top span {
-            float: left;
-            display: block;
-            font-size: 16px;
-            color: #fff;
-            font-family: Tahoma, Geneva, sans-serif;
-            font-weight: bold;
-            padding-top: 22px;
-            padding-left: 8px;
-        }
-
-        .main_inner3 {
-            width: 982px;
-            background: #fff;
-            margin-top: 11px;
-            padding-bottom: 40px;
-        }
-
-        .main_inner3 .inner3_top {
-            width: 982px;
-            height: 55px;
-            background: #adbd26;
-        }
-
-        .main_inner3 .inner3_top img {
-            float: left;
-            padding-top: 18px;
-            padding-left: 23px;
-        }
-
-        .main_inner3 .inner3_top span {
-            float: left;
-            display: block;
-            font-size: 16px;
-            color: #fff;
-            font-family: Tahoma, Geneva, sans-serif;
-            font-weight: bold;
-            padding-top: 22px;
-            padding-left: 8px;
-        }
-
-        .main_inner3 .inner3_bottom .inner3_left {
-            width: 418px;
-            float: left;
-            padding-top: 23px;
-            padding-left: 10px;
-        }
-
-        .main_inner3 .inner3_bottom .inner3_right {
-            width: 487px;
-            float: left;
-            padding-top: 23px;
-            padding-left: 26px;
-        }
-
-        .main_inner3 .inner3_bottom .inner3_right p {
-            color: #666666;
-            font-size: 14px;
-            line-height: 21px;
-            font-family: "微软雅黑";
-        }
-
-        .main_inner4 {
-            width: 982px;
-            height: 43px;
-            background: #adbd26;
-        }
-
-        .main_inner4 img {
-            width: 108;
-            height: 28px;
-            margin: 0 auto;
-            display: block;
-            padding-top: 8px;
-        }
-
-        .list-box {
-            width: 216px;
-            margin: 0 auto;
-        }
-
-        .list-img {
-            border: 1px solid #fbe8dc;
-            width: 211px;
-        }
-
-        .list-img img {
-            height: 307px;
-            width: 211px;
-        }
-
-        .list-title {
-            background: #f17c7c;
-            color: #fff;
-            height: 40px;
-            line-height: 20px;
-            overflow: hidden;
-            padding-right: 5px;
-            width: 210px;
-            text-align: center;
-            font-size: 15px;
-            font-family: "微软雅黑";
-        }
-
-        .list-link {
-            border-bottom: 1px dotted #ffc6a3;
-            color: #777;
-            height: 30px;
-            overflow: hidden;
-            padding: 8px;
-        }
-
-        .list-link a {
-            color: #777;
-            font-size: 12px;
-        }
-
-        .inner2_bottom .list-buy {
-            padding: 5px 8px;
-        }
-
-        .inner2_bottom ul li {
-            float: left;
-            margin: 10px 10px 0px 10px;
-            width: 215px;
-        }
-
-        .list-buy span.l {
-            display: inline-block;
-            float: left;
-            width: 110px;
-        }
-
-        .color-1 {
-            color: #e90000;
-        }
-
-        .b {
-            font-weight: bold;
-            font-size: 12px;
-        }
-
-        .kk {
-            font-size: 12px;
-        }
-
-        .list-buy span.r {
-            float: left;
-            margin-top: 12px;
-        }
-
-        .font-big {
-            font-size: 20px;
-        }
-
-    </style>
-    <script>
-        function pageScroll() {
-            window.scrollBy(0, -100);
-            scrolldelay = setTimeout('pageScroll()', 2);
-            var sTop = document.documentElement.scrollTop + document.body.scrollTop;
-            if (sTop == 0) clearTimeout(scrolldelay);
-        }
-    </script>
-
-
-    <div class="box">
-        <div class="banner">
-            <div class="banner1"></div>
-            <div class="banner2"></div>
-            <div class="banner3"></div>
-        </div>
-        <div class="main">
-            <div class="main_inner1">
-                <div class="inner1_top clearfix"><img src="./images/font1.png"">
-                    <span>Henri Obermeyer from Joseph Cattin</span>
-                </div>
-                <div class="inner1_centre"><img src="./images/main_img1.jpg">
-                </div>
-                <div class="inner1_bottom clearfix"><p><span><strong>推荐词/Note</strong></span><br> <br>
-                    <a href="http://www.winenice.com/zhuanti/lwpjh.html"
-                                                              target="_blank">这里</a>。</p><img
-                        src="./images/main_img2.jpg"
-                        style="display: block;"></div>
-            </div>
-            <div class="main_inner2">
-                <div class="inner2_top"><img src="./images/font2.png"
-                                             style="display: block;"><span>Wines from Joseph Cattin</span></div>
-                <div class="inner2_bottom">
-                    <ul class="clearfix">
-                        <!--产品开始-->
-
-                        <li>
-                            <div class="list-box">
-                                <div class="list-img"><a href="#"
-                                                         target="_blank"><img width="209" height="307"
-                                                                              style="display: inline;"
-                                                                              src="./images/wine3.png"
-                                                                              alt="文字说明" title="" 亨利欧泊麦雅白品诺2012干白葡萄酒""=""
-                                    original="http://www.wineimg.com//picture/image/2014/05/06/bc000881_320_480.jpg"></a>
-                                </div>
-                                <div class="list-title">巴黎大赛金奖<br> 产区：阿尔萨斯</div>
-                                <div class="list-link"><a target="_blank"
-                                                          href="#">亨利欧泊麦雅白品诺2012干白葡萄酒</a>
-                                </div>
-                                <div class="list-buy"> <span class="l">
-								<p class="color-1 b">促销价：<strong class="font-big">158.0</strong></p>
-								<p class="kk">卡木乐斯价：<del>158.0</del></p>
-								</span> <span class="r"><a onclick="buy(&#39;bc000881&#39;)"><img width="84" height="31"
-                                                                                                  style="display: inline; opacity: 0.887748;"
-                                                                                                  src="http://www.wineimg.com/userfiles/image/2014/08/11/zqy/buy.jpg" alt="立即购买"></a></span>
-                                </div>
-                            </div>
-                        </li>
-
-                        <!--产品开始END-->
-                        <!--产品开始-->
-
-                        <li>
-                            <div class="list-box">
-                                <div class="list-img"><a href="#"
-                                                         target="_blank"><img width="209" height="307"
-                                                                              style="display: inline;"
-                                                                              src="./images/wine4.png"
-                                                                              alt="文字说明" title="" 亨利欧泊麦雅灰品诺2012干白葡萄酒""=""
-                                    original="http://www.wineimg.com//picture/image/2014/05/06/bc000882_320_480.jpg"></a>
-                                </div>
-                                <div class="list-title">巴黎金奖；阿尔萨斯金奖<br>产区：阿尔萨斯</div>
-                                <div class="list-link"><a target="_blank"
-                                                          href="#">亨利欧泊麦雅灰品诺2012干白葡萄酒</a>
-                                </div>
-                                <div class="list-buy"> <span class="l">
-								<p class="color-1 b">促销价：<strong class="font-big">198.0</strong></p>
-								<p class="kk">卡木乐斯价：<del>198.0</del></p>
-								</span> <span class="r"><a onclick="buy(&#39;bc000882&#39;)"><img width="84" height="31"
-                                                                                                  style="display: inline; opacity: 0.887748;"
-                                                                                                  src="http://www.wineimg.com/userfiles/image/2014/08/11/zqy/buy.jpg" alt="立即购买"></a></span>
-                                </div>
-                            </div>
-                        </li>
-
-                        <!--产品开始END-->
-                        <!--产品开始-->
-
-                        <li>
-                            <div class="list-box">
-                                <div class="list-img"><a href="#"
-                                                         target="_blank"><img width="209" height="307"
-                                                                              style="display: inline;"
-                                                                              src="./images/wine5.png"
-                                                                              alt="文字说明" title="" 亨利欧泊麦雅雷司令2012干白葡萄酒""=""
-                                    original="http://www.wineimg.com//picture/image/2014/05/06/bc000883_320_480.jpg"></a>
-                                </div>
-                                <div class="list-title">巴黎金奖；阿尔萨斯金奖<br>产区：阿尔萨斯</div>
-                                <div class="list-link"><a target="_blank"
-                                                          href="#">亨利欧泊麦雅雷司令2012干白葡萄酒</a>
-                                </div>
-                                <div class="list-buy"> <span class="l">
-								<p class="color-1 b">促销价：<strong class="font-big">178.0</strong></p>
-								<p class="kk">卡木乐斯价：<del>178.0</del></p>
-								</span> <span class="r"><a onclick="buy(&#39;bc000883&#39;)"><img width="84" height="31"
-                                                                                                  style="display: inline; opacity: 0.887748;"
-                                                                                                  src="./images/buy.jpg" alt="立即购买"></a></span>
-                                </div>
-                            </div>
-                        </li>
-
-                        <!--产品开始END-->
-                        <!--产品开始-->
-
-                        <li>
-                            <div class="list-box">
-                                <div class="list-img"><a href="#"
-                                                         target="_blank"><img width="209" height="307"
-                                                                              style="display: inline;"
-                                                                              src="./images/wine5.png"
-                                                                              alt="文字说明" title="" 亨利欧泊麦雅麝香2012干白葡萄酒""=""
-                                    original="http://www.wineimg.com//picture/image/2014/05/06/bc000885_320_480.jpg"></a>
-                                </div>
-                                <div class="list-title">马孔金奖；阿尔萨斯金奖<br>产区：阿尔萨斯</div>
-                                <div class="list-link"><a target="_blank"
-                                                          href="#">亨利欧泊麦雅麝香2012干白葡萄酒</a>
-                                </div>
-                                <div class="list-buy"> <span class="l">
-								<p class="color-1 b">促销价：<strong class="font-big">178.0</strong></p>
-								<p class="kk">卡木乐斯价：<del>178.0</del></p>
-								</span> <span class="r"><a onclick="buy(&#39;bc000885&#39;)"><img width="84" height="31"
-                                                                                                  style="display: inline; opacity: 0.887748;"
-                                                                                                  src="./images/buy.jpg" alt="立即购买"></a></span>
-                                </div>
-                            </div>
-                        </li>
-
-                        <!--产品开始END-->
-                        <!--产品开始-->
-
-                        <li>
-                            <div class="list-box">
-                                <div class="list-img"><a href="#"
-                                                         target="_blank"><img width="209" height="307"
-                                                                              style="display: inline; opacity: 0.726995;"
-                                                                              src="./images/wine6.png"
-                                                                              alt="文字说明" title="" 亨利欧泊麦雅西万尼干白葡萄酒""=""
-                                    original="http://www.wineimg.com//picture/image/2014/05/14/bc000886_320_480.jpg"></a>
-                                </div>
-                                <div class="list-title">马孔金奖；阿尔萨斯金奖<br>产区：阿尔萨斯</div>
-                                <div class="list-link"><a target="_blank"
-                                                          href="#">亨利欧泊麦雅西万尼干白葡萄酒</a>
-                                </div>
-                                <div class="list-buy"> <span class="l">
-								<p class="color-1 b">促销价：<strong class="font-big">128.0</strong></p>
-								<p class="kk">卡木乐斯价：<del>128.0</del></p>
-								</span> <span class="r"><a onclick="buy(&#39;bc000886&#39;)"><img width="84" height="31"
-                                                                                                  style="display: inline;"
-                                                                                                  src="./images/buy.jpg"
-                                                                                                  alt="立即购买"
-                                                                                                  ></a></span>
-                                </div>
-                            </div>
-                        </li>
-
-                        <!--产品开始END-->
-                        <!--产品开始-->
-
-
-                        <!--产品开始END-->
-
-                    </ul>
-                </div>
-            </div>
-            <div class="main_inner3">
-                <div class="inner3_top">
-                    <img src="./images/font3.png">
-                    <span>About Joseph Cattin</span>
-                </div>
-                <div class="inner3_bottom clearfix">
-                    <div class="inner3_left clearfix">
-                        <img src="./images/main_img3.png">
+                <div class="col-md-4 footer-middle wow fadeInUp animated" data-wow-delay=".5s">
+                    <div class="footer-middle-heading">
 
                     </div>
-                    <div class="inner3_right"><p><strong>“Camolas -卡木乐斯” 起源</strong><br>
-                        “Adega Camolas ”是家族企业, 他们生产和瓶装葡萄酒已超过二十余年。
-                        作为帕尔美拉地区最有魅力的家庭之一，其创始人决定将其姓氏用作现在公认的品牌“CAMOLAS-卡木乐斯”
-                        。<br>
+                    <div class="footer-middle-bottom">
 
-                        <strong>关于产区-阿拉比达地区</strong><br>
-                        产自受保护的阿拉比达地区的自然生态园, 葡萄酒酿造来自优质地块的精选葡萄，从而这块区域酿造出葡萄酒独特的口味。
-                        这个地区的酿酒葡萄种子可以追溯到公元前8年
-                        1000年至2000年之间，塔尔萨人和腓尼基人在这个地区生产葡萄酒。该地区本身即阿拉比达山脉是被公认为人类自然和文化遗产。
-
-                        <br>
-
-                    </p></div>
                 </div>
+                </div>
+                <div class="col-md-4 footer-right wow fadeInRight animated" data-wow-delay=".5s">
+                    <div class="footer-middle-heading footer-right-heading">
+                        <h3 style="font-size: 24px">加入我们</h3>
+                    </div>
+                    <div class="footer-right-bottom">
+                        <p>留下你的联系方式，加入我们吧！</p>
+                        <form>
+                            <input type="email" id="mc4wp_email" name="EMAIL" placeholder="Enter your email here"
+                                   required="">
+                            <input type="submit" value="提交">
+                        </form>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
             </div>
-            <div class="main_inner4"><a onclick="pageScroll()"><img src="./images/bottom_img.png""></a>
+            <div class="footer-bottom">
+                <div class="footer-bottom-grids">
+                    <div class="footer-bottom-left wow fadeInLeft animated" data-wow-delay=".5s">
+                        <p>Copyright &copy; 2016.Company name All rights reserved.</a>
+                        </p>
+                    </div>
+                    <div class="footer-bottom-right icons wow fadeInRight animated" data-wow-delay=".5s">
+                        <ul>
+                            <li><a href="https://twitter.com/" class="twitter"></a></li>
+                            <li><a href="https://facebook.com/" class="twitter facebook"></a></li>
+                            <li><a href="https://chrome.com/" class="twitter chrome"></a></li>
+                            <li><a href="https://dribbble.com/" class="twitter dribbble"></a></li>
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
             </div>
         </div>
     </div>
+    <!-- //footer -->
 </div>
-
-
-<!-- 底部 -->
-<div id="foot">
-    <div class="award_ico clearfix">
-        <ul>
-            <li class="yp"><a href="#"
-                              target="_blank"><i></i><span>100%<br>原瓶进口</span></a></li>
-            <li class="jk"><a href="#"
-                              target="_blank"><i></i><span>原产地<br>全球直供</span></a></li>
-            <li class="yc"><a href="#"
-                              target="_blank"><i></i><span>恒温恒湿<br>酒窖储藏</span></a></li>
-            <li class="sd"><a href="#"
-                              target="_blank"><i></i><span>首单满XXX<br>元免运费</span></a></li>
-            <li class="zy"><a href="#"
-                              target="_blank"><i></i><span>百万会员<br>汇聚好评</span></a></li>
-            <li class="lh"><a href="#"
-                              target="_blank"><i></i><span>灵活支付<br>方便快捷</span></a></li>
-            <li class="kx"><a href="#"
-                              target="_blank"><i></i><span>专业包装<br>限时到达</span></a></li>
-            <li class="gw"><a href="#"
-                              target="_blank" ><i></i><span>专业顾问<br>贴身服务</span></a></li>
-            <li class="hp"><a href="#"
-                              target="_blank"><i></i><span>世界级<br>品酒师团队</span></a></li>
-        </ul>
-    </div>
-    <div class="service">
-        <div class="service_w clearfix">
-            <div class="padding pr clearfix">
-                <div class="bar clearfix">
-                    <h3 class="logo"><img src="./images/ft_logo.png" alt="卡木乐斯" ></h3>
-                    <dl class="service_phone clearfix">
-                        <dd>订购/服务热线（免长途费）</dd>
-                        <dt>400-600-8009</dt>
-                    </dl>
-                </div>
-                <div class="list">
-                    <dl>
-                        <dt>关注卡木乐斯</dt>
-                        <dd><b>·</b><a href="http://e.weibo.com/jiumeiwang" target="_blank">新浪微博</a></dd>
-                        <dd><b>·</b><a href="http://t.qq.com/winenice-nicewine" target="_blank">腾讯微博</a></dd>
-                        <dd class="ft_wx"><b>·</b><a href="#"
-                                                     target="_blank">我的微信</a>
-                            <p class="ft_ico_wx"><img src="./images/weixin_pic.jpg" alt="加微信"
-                                                      original="/images/index/weixin_pic.jpg"></p></dd>
-                        <dd><b>·</b><a href="#/user/user_findMagazine.shtml?from=&amp;solicitType="
-                                       target="_blank">目录订阅</a></dd>
-                    </dl>
-                    <dl>
-                        <dt>帮助指南</dt>
-                        <dd><b>·</b><a href="#" target="_blank">如何注册</a></dd>
-                        <dd><b>·</b><a href="#" target="_blank">购物流程</a></dd>
-                        <dd><b>·</b><a href="#" target="_blank">如何搜索</a></dd>
-                    </dl>
-                    <dl>
-                        <dt>配送服务</dt>
-                        <dd><b>·</b><a href="#"
-                                       target="_blank">工作时间</a></dd>
-                        <dd><b>·</b><a href="#" target="_blank">货到付款城市及配送时间</a>
-                        </dd>
-                        <dd><b>·</b><a href="#" target="_blank">款到快递城市及配送时间</a>
-                        </dd>
-                        <dd><b>·</b><a href="#" target="_blank">配送费收取标准</a>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>如何付款/退款</dt>
-                        <dd><b>·</b><a href="#" target="_blank">支付方式</a></dd>
-
-                        <dd><b>·</b><a href="#" target="_blank">发票制度说明</a>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>售后服务</dt>
-                        <dd><b>·</b><a href="#"
-                                       target="_blank">补货流程</a></dd>
-                        <dd><b>·</b><a href="#"
-                                       target="_blank">退换货政策</a></dd>
-                        <dd><b>·</b><a href="#" target="_blank">如何办理退换货</a>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>客服中心</dt>
-                        <dd><b>·</b><a href="#" target="_blank">会员计划</a>
-                        </dd>
-                        <dd><b>·</b><a href="#"
-                                       target="_blank">会员权益</a></dd>
-                        <dd><b>·</b><a href="#" target="_blank">卡木乐斯积分</a>
-                        </dd>
-                        <dd><b>·</b><a href="#"target="_blank">联系我们</a>
-                        </dd>
-                        <dd><b>·</b><a href="#" target="_blank">投诉与建议</a>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>生活卡/礼券</dt>
-                        <dd><b>·</b><a href="#" target="_blank">礼品卡 -
-                            查询</a></dd>
-                        <dd><b>·</b><a href="#" target="_blank">提货卡 -
-                            我要提货</a></dd>
-                        <dd><b>·</b><a href="#" target="_blank">礼
-                            券-如何使用</a></dd>
-                    </dl>
-                </div>
-            </div>
-            <div class="target">
-                <a href="#">HOME返回首页←</a><a
-                    href="#">TOP回到页顶↑</a>
-            </div>
-        </div>
-    </div>
-    <div class="links">
-        <a target="_blank" href="#">美酒网</a><span>|
-            <a target="_blank" href="#">公司简介</a><span>|</span>
-            <a target="_blank" href="#">客服服务</a><span>|</span>
-            <a target="_blank" href="#">隐私声明</a><span>|</span>
-            <a target="_blank" href="#">联系我们</a><span>|</span>
-            <a target="_blank" href="#">友情链接</a><span>|</span>
-            <a target="_blank" href="#">加入卡木乐斯网</a><span>|</span>
-            <a target="_blank" href="#">经销招商</a><span>|</span>
-            <a target="_blank" href="#">网站联盟</a><span>|</span>
-            <a target="_blank" href="#">媒体报道</a><span>|</span>
-            <a target="_blank" href="#">网站地图</a>
-        </span></div>
-    <div class="copyright">
-        Copyright © 2008 JiuMei.com All Rights Reserved | 京ICP备07020624号-2 | <a
-            style="text-decoration:none;color:#555352;"
-            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11011302001142" target="_blank"><img
-            style="display:inline;" src="./images/grey.gif" original="#/images/index/jj.png">京公网安备
-        11011302001142号</a>
-    </div>
-    <div class="warn clearfix"><i></i>
-        <p>购买前请确认达到法定饮酒年龄！卡木乐斯网不销售任何含酒精产品给18岁以下人士！</p>
-    </div>
-    <div class="tag_ico clearfix">
-        <a href="javascript:;"><img  src="./images/ft_ico_4.jpg" alt=""
-                                    style="display: inline-block;"></a>
-        <a href="javascript:;"><img  src="./images/ft_ico_5.jpg" alt=""
-                                     style="display: inline-block;"></a>
-        <a href="javascript:;"><img src="./images/ft_ico_6.jpg" alt=""
-                                    style="display: inline-block;"></a>
-    </div>
-</div>
-<!-- 底部 END -->
-<script type="text/javascript" src="./js/jquery.lazyload.js.下载"></script>
-<script type="text/javascript" src="./js/Track.js.下载"></script>
+<!--smooth-scrolling-of-move-up-->
 <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-24024946-1']);
-    _gaq.push(['_setDomainName', 'winenice.com']);
-    _gaq.push(['_trackPageview']);
-    (function () {
-        var ga = document.createElement('script');
-        ga.type = 'text/javascript';
-        ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(ga, s);
-    })();
-</script>
-<script type="text/javascript">
-    (function (d) {
-        window.bd_cpro_rtid = "n1TknWn";
-        var s = d.createElement("script");
-        s.type = "text/javascript";
-        s.async = true;
-        s.src = location.protocol + "//cpro.baidu.com/cpro/ui/rt.js";
-        var s0 = d.getElementsByTagName("script")[0];
-        s0.parentNode.insertBefore(s, s0);
-    })(document);
-</script>
-<script type="text/javascript">
-    var _bdhm_top = 0;
-    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-    var _bdhm_tim = new Image(1, 1);
-    _bdhm_tim.id = "bdhmPerimg";
-    _bdhm_tim.src = _bdhmProtocol + "hm.baidu.com/_tt.gif?si=694d6bcd53076df06ca999c6bb29c71e&rnd=" + Math.round(Math.random() * 2147483647);
-    _bdhm_tim.onload = function () {
-        _bdhm_top = 1;
-    }
-</script>
-<script type="text/javascript">
-    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F694d6bcd53076df06ca999c6bb29c71e' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script src="./js/h.js.下载" type="text/javascript"></script>
-<script type="text/javascript">
-    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F1a37a58cfe4e375c5bef7c07737685b9' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script src="./js/h.js(1).下载" type="text/javascript"></script>
-<script type="text/javascript">
-    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F0d3db891c68e88d7786b2b7ecae86efd' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script src="./js/h.js(2).下载" type="text/javascript"></script>
-<!-- 
-<div style="width:980px; margin:0 auto; text-align:center;">
-        <a id='___szfw_logo___' href='https://search.szfw.org/cert/l/CX20130619002551002626' target='_blank'><img src='http://www.wineimg.com/images/cxcert.png'></a>   
-    </div>
-<script type='text/javascript'>(function(){document.getElementById('___szfw_logo___').oncontextmenu = function(){return false;}})();</script>
--->
-<script type="text/javascript">(function () {
-    try {
-        var viz = document.createElement("script");
-        viz.type = "text/javascript";
-        viz.async = true;
-        viz.src = ("https:" == document.location.protocol ? "https://ssl.vizury.com" : "http://serv3.vizury.com") + "/analyze/pixel.php?account_id=VIZVRM693";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(viz, s);
-        viz.onload = function () {
-            try {
-                pixel.parse();
-            } catch (i) {
-            }
+    $(document).ready(function () {
+        /*
+        var defaults = {
+            containerID: 'toTop', // fading element id
+            containerHoverID: 'toTopHover', // fading element hover id
+            scrollSpeed: 1200,
+            easingType: 'linear'
         };
-        viz.onreadystatechange = function () {
-            if (viz.readyState == "complete" || viz.readyState == "loaded") {
-                try {
-                    pixel.parse();
-                } catch (i) {
-                }
-            }
-        };
-    } catch (i) {
-    }
-})();</script>
+        */
 
-<div class="layer" id="cartbox" style="display:none;">
-    <!--popup-->
-    <div class="close cursor"><a id="close" href="javascript:void(0);" onclick="closecartBox();"
-                                 class="flr guan color3">关闭</a></div>
-    <div class="popup_c">
-        <div class="popup_bg">
-            <p><b class="font14">该商品已成功放入购物车</b></p>
-            <p>购物车共 <font class="color90" id="fontNum"></font> 件商品 合计： <font class="color90" id="fontAmount"></font> 元
-            </p>
-            <a class="shop color90" id="close2" href="javascript:closecartBox();" title="继续购物">&lt;&lt; 继续购物</a><a
-                class="jies colorf" href="javascript:void(0);" onclick="goCartManager()" title="去结算">去结算&gt;&gt;</a>
-        </div>
-    </div>
-    <div class="gm_list" id="hisListDiv">
+        $().UItoTop({easingType: 'easeOutQuart'});
 
-    </div>
-</div>
-<div class="overlay" id="spm" style="opacity: 0.4; display:none;"><!--popup END--></div>
-<script type="text/javascript" src="./js/head_foot.js.下载"></script>
-
-
-<iframe id="blockbyte-bs-sidebar" data-pos="left" src="./saved_resource(1).html"></iframe>
-<div id="blockbyte-bs-indicator" class="blockbyte-bs-fullHeight blockbyte-bs-visible" data-pos="left"
-     style="width: 2px; height: 100%; top: 0%;">
-    <div><span></span></div>
-</div>
+    });
+</script>
+<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+<!--//smooth-scrolling-of-move-up-->
 </body>
 </html>
